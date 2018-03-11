@@ -15,6 +15,18 @@
             margin: 5rem 0; /* Space out the Bootstrap <hr> more */
         }
 
+        @media (max-width: 480px) {
+            .navbar {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .big-logo {
+                display: none !important;
+            }
+        }
+
     </style>
 
     <!-- Bootstrap CSS -->
@@ -26,18 +38,23 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Systelab Open Source Program Office</a>
+    <a class="navbar-brand" href="#">
+        <img src="werfen.png" width="30" height="20" class="d-inline-block align-top mt-1" alt="">
+        Systelab Open Source Program Office
+    </a>
 </nav>
-
 
 <div class="bg-primary">
     <div class="container">
+        <div class="big-logo bg-primary text-center">
+            <img src="werfen.png" width="120" height="80" class="mt-4" alt="">
+        </div>
         <div class="row mb-4">
             <div class="col-md-12">
-                <div class="text-white text-center d-flex align-items-center py-5 px-4">
+                <div class="text-white text-center d-flex align-items-center pb-5 pt-2 px-1">
                     <div class="w-100">
-                        <h1 class="card-title pt-3 mb-5 font-bold"><strong>Building Open Source for Everyone</strong></h1>
-                        <p class="mx-5 mb-5">Collaboration, community, and curiosity - essential ingredients to a vibrant open source community and part of Systelab's culture.
+                        <h1 class="card-title pt-5 mb-5 font-bold"><strong>Building Open Source for Everyone</strong></h1>
+                        <p class="mb-5">Collaboration, community, and curiosity - essential ingredients to a vibrant open source community and part of Systelab's culture.
                             Systelab's developers participate in a wide variety of open source projects through technical contributions, community leadership, and project
                             innovation.</p>
                         <a href="https://github.com/systelab" class="btn btn-outline-light"><i class="fab fa-github left"></i> View in GitHub</a>
@@ -82,7 +99,7 @@
                 Component test is done using xUnit, Moq and Allure.</p>
         </div>
         <div class="col-md-4 col-sm-4">
-            <i class="fab fa-cuttlefish text-info pt-5 pb-5 icon-text"></i>
+            <i class="fas fa-microchip text-info pt-5 pb-5 icon-text"></i>
             <h3>Seed C++</h3>
             <p>A <a href="https://github.com/systelab/seed-cpp">skeleton</a> for a C++ application, using the different best-practices that we internally promote at Systelab.</p>
         </div>
@@ -94,10 +111,10 @@
     <div class="container">
         <div class="row mb-4 mt-5">
             <div class="col-md-12">
-                <div class="text-white text-center d-flex align-items-center pt-3 px-4">
+                <div class="text-white text-center d-flex align-items-center pt-3 px-1">
                     <div class="w-100">
                         <h1 class="card-title pt-3 mb-5 font-bold"><strong>Vibrant communities</strong></h1>
-                        <p class="mx-5 mb-5">Systelab's developers participate in different communities in several areas of interest, sharing their knowledge.</p>
+                        <p class="mb-5">Systelab's developers participate in different communities in several areas of interest, sharing their knowledge.</p>
                     </div>
                 </div>
             </div>
@@ -116,7 +133,7 @@
             <p>There is a big interest in Systelab in all the Angular related technologies as this front-end framework is the most used in the company.</p>
             <p>Apart form the <a href="https://github.com/systelab/seed-angular">Angular Project Seed</a> that help us quickly bootstrap our projects and dev environment, we are
                 working in several open libraries that we share across the projects.</p>
-            <p><a href="https://github.com/systelab/systelab-components">systelab-components</a> is a library with <a href="https://systelab.github.io/components">common UI components</a> to speed up your Angular developments.</p>
+            <p><a href="https://github.com/systelab/systelab-components">systelab-components</a> is a library with <a href="https://systelab.github.io/systelab-components-dist/">common UI components</a> to speed up your Angular developments.</p>
             <p><a href="https://github.com/systelab/systelab-preferences">systelab-preferences</a> is a library with utilities to manage the application preferences, <a
                     href="https://github.com/systelab/systelab-translate">systelab-translate</a> is a library with i18n utilities to manage the application localization, and <a
                     href="https://github.com/systelab/systelab-login">systelab-login</a> is a library with usefull login components. </p>
@@ -144,7 +161,8 @@
 </div>
 
 
-<footer class="bg-primary mt-4" style="height:100px;">
+<footer class="bg-primary mt-4" style="height:60px;">
+    <p class="text-white pl-2 pt-2">Systelab Technologies.</p>
 </footer>
 
 <!-- Optional JavaScript -->
