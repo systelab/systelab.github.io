@@ -1,6 +1,6 @@
-core-js@2.5.3
+core-js@2.5.5
 MIT
-Copyright (c) 2014-2017 Denis Pushkarev
+Copyright (c) 2014-2018 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-zone.js@0.8.20
+zone.js@0.8.26
 MIT
 The MIT License
 
-Copyright (c) 2016 Google, Inc.
+Copyright (c) 2016-2018 Google, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -67,7 +67,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-ngx-markdown@1.5.1
+ngx-markdown@1.5.2
 MIT
 MIT License
 
@@ -91,7 +91,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-marked@0.3.17
+marked@0.3.19
 MIT
 # License information
 
@@ -137,7 +137,7 @@ Redistribution and use in source and binary forms, with or without modification,
 
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
-@angular/http@5.2.7
+@angular/http@5.2.9
 MIT
 MIT
 
@@ -165,23 +165,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@angular/platform-browser@5.2.7
+@angular/platform-browser@5.2.9
 MIT
 MIT
 
-@angular/core@5.2.7
+@angular/core@5.2.9
 MIT
 MIT
 
-@angular/common@5.2.7
+@angular/common@5.2.9
 MIT
 MIT
 
-@angular/platform-browser-dynamic@5.2.7
+@angular/platform-browser-dynamic@5.2.9
 MIT
 MIT
 
-bootstrap@4.0.0
+bootstrap@4.1.0
 MIT
 The MIT License (MIT)
 
