@@ -135,6 +135,13 @@ MIT
 MIT
 MIT
 
+date-fns@2.0.0-alpha.7
+MIT
+# License
+
+date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
+Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
+
 @angular/platform-browser-dynamic@5.2.10
 MIT
 MIT
