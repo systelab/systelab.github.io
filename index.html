@@ -15,6 +15,32 @@
             margin: 5rem 0; /* Space out the Bootstrap <hr> more */
         }
 
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #FFC107;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            transition: 0.2s;
+            text-align: center;
+        }
+
+        #myBtn:hover {
+            background-color: #FF5722;
+        }
+
         @media (max-width: 480px) {
             .navbar {
                 display: none !important;
@@ -43,6 +69,10 @@
         Systelab Open Source Program Office
     </a>
 </nav>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <i class="fas fa-angle-up" style="font-size: 30px;"></i>
+</button>
 
 <div class="bg-primary">
     <div class="container">
@@ -73,12 +103,14 @@
         <div class="col-md-4 col-sm-4">
             <i class="fab fa-angular" style="font-size:100px; color:red; padding-top: 42px; padding-bottom: 34px;"></i>
             <h3>Seed Angular</h3>
-            <p>A <a href="https://github.com/systelab/seed-angular">skeleton</a> for an Angular 5 front-end application, using the different libraries that we internally develop and promote at Systelab. E2E Test is done using Karma and Allure. Instructions for 'electronize' the solution are also provided.</p>
+            <p>A <a href="https://github.com/systelab/seed-angular">skeleton</a> for an Angular 5 front-end application, using the different libraries that we internally develop
+                and promote at Systelab. E2E Test is done using Karma and Allure. Instructions for 'electronize' the solution are also provided.</p>
         </div>
         <div class="col-md-4 col-sm-4">
             <i class="fas fa-desktop text-success pt-5 pb-5 icon-text"></i>
             <h3>Seed Qt</h3>
-            <p>A <a href="https://github.com/systelab/seed-qt">skeleton</a> for a QT front-end application, using the different best-practices that we internally promote at Systelab.</p>
+            <p>A <a href="https://github.com/systelab/seed-qt">skeleton</a> for a QT front-end application, using the different best-practices that we internally promote at
+                Systelab.</p>
         </div>
     </div>
 </div>
@@ -89,13 +121,15 @@
         <div class="col-md-4 col-sm-4">
             <i class="fas fa-coffee text-primary pt-5 pb-5 icon-text"></i>
             <h3>Seed JEE</h3>
-            <p>A <a href="https://github.com/systelab/seed-jee">skeleton</a> for a JEE back-end application, using Bean Validation, JAXB, CDI, JPA, EJB, JAX-RS and Swagger. Security is done with JWT.
+            <p>A <a href="https://github.com/systelab/seed-jee">skeleton</a> for a JEE back-end application, using Bean Validation, JAXB, CDI, JPA, EJB, JAX-RS and Swagger.
+                Security is done with JWT.
                 Component test is done using JUnit and Allure.</p>
         </div>
         <div class="col-md-4 col-sm-4">
             <i class="fab fa-microsoft text-warning pt-5 pb-5 icon-text"></i>
             <h3>Seed .NET</h3>
-            <p>A <a href="https://github.com/systelab/seed-dotnet">skeleton</a> for a .NET back-end application, using .NET Core 2.0.0, Entity Framework Core 6.0 and Swagger. Security is done with JWT.
+            <p>A <a href="https://github.com/systelab/seed-dotnet">skeleton</a> for a .NET back-end application, using .NET Core 2.0.0, Entity Framework Core 6.0 and Swagger.
+                Security is done with JWT.
                 Component test is done using xUnit, Moq and Allure.</p>
         </div>
         <div class="col-md-4 col-sm-4">
@@ -134,12 +168,20 @@
             <p>Apart form the <a href="https://github.com/systelab/seed-angular">Angular Project Seed</a> that help us quickly bootstrap our projects and dev environment, we are
                 working in a generator and in several open libraries that we share across the projects.</p>
             <ul>
-            <li><a href="https://github.com/systelab/generator-systelab-angular">generator-systelab-angular</a> is a Yeoman generator that completely scaffolds out a new project, and <a href="https://github.com/systelab/generator-systelab-angular-lib">generator-systelab-angular-lib</a> is a Yeoman generator that completely scaffolds out a new systelab library.</li>
-            <li><a href="https://github.com/systelab/systelab-components">systelab-components</a> is a library with <a href="https://systelab.github.io/components">common UI components</a> to speed up your Angular developments.</li>
-            <li><a href="https://github.com/systelab/systelab-charts">systelab-charts</a> is a library with <a href="https://systelab.github.io/charts">common charts</a> to be used in your application.</li>
-            <li><a href="https://github.com/systelab/systelab-preferences">systelab-preferences</a> is a library with utilities to manage the application preferences, <a
-                    href="https://github.com/systelab/systelab-translate">systelab-translate</a> is a library with i18n utilities to manage the application localization, and <a
-                    href="https://github.com/systelab/systelab-login">systelab-login</a> is a library with usefull login components. </li>
+                <li><a href="https://github.com/systelab/generator-systelab-angular">generator-systelab-angular</a> is a Yeoman generator that completely scaffolds out a new
+                    project, and <a href="https://github.com/systelab/generator-systelab-angular-lib">generator-systelab-angular-lib</a> is a Yeoman generator that completely
+                    scaffolds out a new systelab library.
+                </li>
+                <li><a href="https://github.com/systelab/systelab-components">systelab-components</a> is a library with <a href="https://systelab.github.io/components">common UI
+                    components</a> to speed up your Angular developments.
+                </li>
+                <li><a href="https://github.com/systelab/systelab-charts">systelab-charts</a> is a library with <a href="https://systelab.github.io/charts">common charts</a> to be
+                    used in your application.
+                </li>
+                <li><a href="https://github.com/systelab/systelab-preferences">systelab-preferences</a> is a library with utilities to manage the application preferences, <a
+                        href="https://github.com/systelab/systelab-translate">systelab-translate</a> is a library with i18n utilities to manage the application localization, and <a
+                        href="https://github.com/systelab/systelab-login">systelab-login</a> is a library with usefull login components.
+                </li>
             </ul>
         </div>
     </div>
@@ -157,9 +199,13 @@
             <p>Apart form the <a href="https://github.com/systelab/seed-cpp">C++ Project Seed</a> that help us quickly bootstrap our projects and dev environment, we are
                 working in several open libraries that we share across the projects.</p>
             <ul>
-                <li><a href="https://github.com/systelab/cpp-db-adapter">cpp-db-adapter</a>, <a href="https://github.com/systelab/cpp-json-adapter">cpp-json-adapter</a> and <a href="https://github.com/systelab/cpp-webserver-adapter">cpp-webserver-adapter</a>.</li>
-                <li><a href="https://github.com/systelab/cpp-sqlite-db-adapter">cpp-sqlite-db-adapter</a>, <a href="https://github.com/systelab/cpp-rapidjson-json-adapter">cpp-rapidjson-json-adapter</a> and <a href="https://github.com/systelab/cpp-boostasio-webserver-adapter">cpp-boostasio-webserver-adapter</a>.</li>
-             </ul>
+                <li><a href="https://github.com/systelab/cpp-db-adapter">cpp-db-adapter</a>, <a href="https://github.com/systelab/cpp-json-adapter">cpp-json-adapter</a> and <a
+                        href="https://github.com/systelab/cpp-webserver-adapter">cpp-webserver-adapter</a>.
+                </li>
+                <li><a href="https://github.com/systelab/cpp-sqlite-db-adapter">cpp-sqlite-db-adapter</a>, <a href="https://github.com/systelab/cpp-rapidjson-json-adapter">cpp-rapidjson-json-adapter</a>
+                    and <a href="https://github.com/systelab/cpp-boostasio-webserver-adapter">cpp-boostasio-webserver-adapter</a>.
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -196,5 +242,92 @@
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("myBtn").style.display = "block";
+		} else {
+			document.getElementById("myBtn").style.display = "none";
+		}
+	}
+
+	function scrollTo(element, target, duration) {
+		target = Math.round(target);
+		duration = Math.round(duration);
+		if (duration < 0) {
+			return Promise.reject("bad duration");
+		}
+		if (duration === 0) {
+			element.scrollTop = target;
+			return Promise.resolve();
+		}
+
+		var start_time = Date.now();
+		var end_time = start_time + duration;
+
+		var start_top = element.scrollTop;
+		var distance = target - start_top;
+
+		// based on http://en.wikipedia.org/wiki/Smoothstep
+		var smooth_step = function(start, end, point) {
+			if(point <= start) { return 0; }
+			if(point >= end) { return 1; }
+			var x = (point - start) / (end - start); // interpolation
+			return x*x*(3 - 2*x);
+		}
+
+		return new Promise(function(resolve, reject) {
+			// This is to keep track of where the element's scrollTop is
+			// supposed to be, based on what we're doing
+			var previous_top = element.scrollTop;
+
+			// This is like a think function from a game loop
+			var scroll_frame = function() {
+				if(element.scrollTop != previous_top) {
+					reject("interrupted");
+					return;
+				}
+
+				// set the scrollTop for this frame
+				var now = Date.now();
+				var point = smooth_step(start_time, end_time, now);
+				var frameTop = Math.round(start_top + (distance * point));
+				element.scrollTop = frameTop;
+
+				// check if we're done!
+				if(now >= end_time) {
+					resolve();
+					return;
+				}
+
+				// If we were supposed to scroll but didn't, then we
+				// probably hit the limit, so consider it done; not
+				// interrupted.
+				if(element.scrollTop === previous_top
+					&& element.scrollTop !== frameTop) {
+					resolve();
+					return;
+				}
+				previous_top = element.scrollTop;
+
+				// schedule next frame for execution
+				setTimeout(scroll_frame, 0);
+			}
+
+			// boostrap the animation process
+			setTimeout(scroll_frame, 0);
+		});
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		scrollTo(document.body, 0, 500);
+	}
+</script>
 </body>
 </html>
