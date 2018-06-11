@@ -449,11 +449,11 @@ mobile-drag-drop@2.3.0-rc.1
 MIT
 MIT
 
-@ngx-translate/core@10.0.1
+@angular/forms@6.0.4
 MIT
 MIT
 
-@angular/forms@6.0.4
+@ngx-translate/core@10.0.1
 MIT
 MIT
 
