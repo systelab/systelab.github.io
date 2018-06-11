@@ -304,7 +304,7 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-systelab-translate@4.2.1
+systelab-translate@4.2.2
 MIT
 MIT License
 
