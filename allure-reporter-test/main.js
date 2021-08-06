@@ -245,22 +245,22 @@ var AppComponent = /** @class */ (function () {
         parameters.password = this.password;
         parameters.server = this.server;
         parameters.testSuites = this.testSuites;
-        if (this.testSuites.length === 0) {
-            this.toastr.error('No test case provided.');
-            return;
-        }
-        if (!parameters.username) {
-            this.toastr.error('No username provided.');
-            return;
-        }
-        if (!parameters.password) {
-            this.toastr.error('No password provided.');
-            return;
-        }
-        if (!parameters.server) {
-            this.toastr.error('No server provided.');
-            return;
-        }
+        // if (this.testSuites.length === 0) {
+        // 	this.toastr.error('No test case provided.');
+        // 	return;
+        // }
+        // if (!parameters.username) {
+        // 	this.toastr.error('No username provided.');
+        // 	return;
+        // }
+        // if (!parameters.password) {
+        // 	this.toastr.error('No password provided.');
+        // 	return;
+        // }
+        // if (!parameters.server) {
+        // 	this.toastr.error('No server provided.');
+        // 	return;
+        // }
         this.dialogService.showDialog(_features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_3__["ReporterDialog"], parameters)
             .subscribe(function (result) {
         });
@@ -1518,7 +1518,18 @@ var TestSummaryTableComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<systelab-dialog-header (close)=\"close()\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t[(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t [(multipleSelectedItemList)]=\"selectedTestGroups\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t [isDisabled]=\"selectedTestCycleId!==undefined\"></test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\" [disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\" rows=\"14\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
+module.exports = "<systelab-dialog-header (close)=\"close()\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t[(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t [(multipleSelectedItemList)]=\"selectedTestGroups\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t [isDisabled]=\"selectedTestCycleId!==undefined\"></test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\" [disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\" rows=\"14\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<div class=\"progress allure-progress-bar\" style=\"height: 20px;\">\r\n\t\t<div class=\"progress-bar bg-success\" role=\"progressbar\" [ngStyle]=\"{'width':testsRunOkPercentage + '%'}\" attr.aria-valuenow=\"{{testsRunOkPercentage}}\"\r\n\t\t\taria-valuenow=\"15\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t\t\t{{testsRunOk}} / {{totalTestsRun}}\r\n\t\t</div>\r\n\t\t<div class=\"progress-bar bg-danger\" role=\"progressbar\" role=\"slider\" [ngStyle]=\"{'width':testsRunWrongPercentage + '%'}\"\r\n\t\t\tattr.aria-valuenow=\"{{testsRunWrongPercentage}}\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t\t\t{{testsRunWrong}} / {{totalTestsRun}}\r\n\t\t</div>\r\n\t</div>\r\n\t<button type=\"button\" class=\"btn ml-auto\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/features/reporter/reporter-dialog.component.scss":
+/*!******************************************************************!*\
+  !*** ./src/app/features/reporter/reporter-dialog.component.scss ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".allure-progress-bar {\n  width: 70%;\n  margin: 5px 0 0 20px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmVhdHVyZXMvcmVwb3J0ZXIvQzpcXFByb2plY3RzXFxvcGVuU291cmNlXFxhbGx1cmUtcmVwb3J0ZXIvc3JjXFxhcHBcXGZlYXR1cmVzXFxyZXBvcnRlclxccmVwb3J0ZXItZGlhbG9nLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVTtFQUNWLHFCQUFvQixFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2ZlYXR1cmVzL3JlcG9ydGVyL3JlcG9ydGVyLWRpYWxvZy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hbGx1cmUtcHJvZ3Jlc3MtYmFyIHtcclxuICB3aWR0aDogNzAlO1xyXG4gIG1hcmdpbjogNXB4IDAgMCAyMHB4O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -1607,6 +1618,11 @@ var ReporterDialog = /** @class */ (function () {
         this.selectedTestGroups = [];
         this.nameForNewTestCycle = '';
         this.actualResults = '';
+        this.totalTestsRun = 0;
+        this.testsRunOk = 0;
+        this.testsRunWrong = 0;
+        this.testsRunWrongPercentage = 0;
+        this.testsRunOkPercentage = 0;
         this.parameters = dialog.context;
     }
     ReporterDialog.prototype.ngOnInit = function () {
@@ -1639,8 +1655,17 @@ var ReporterDialog = /** @class */ (function () {
         }
     };
     ReporterDialog.prototype.isValidForm = function () {
-        return this._userId && this.selectedProjectId && this.selectedTestPlanId &&
-            (this.selectedTestCycleId || (this.selectedTestGroups.length > 0 && this.nameForNewTestCycle !== ''));
+        if (this._userId) {
+            if (this.selectedTestCycleId) {
+                return true;
+            }
+            else {
+                return this.selectedProjectId && this.selectedTestPlanId && this.selectedTestGroups.length > 0 && this.nameForNewTestCycle !== '';
+            }
+        }
+        else {
+            return false;
+        }
     };
     Object.defineProperty(ReporterDialog.prototype, "selectedProjectId", {
         get: function () {
@@ -1740,10 +1765,19 @@ var ReporterDialog = /** @class */ (function () {
             });
         }
     };
+    ReporterDialog.prototype.testSuccess = function (testRun) {
+        this.testsRunOk++;
+        this.testsRunOkPercentage = 100 * this.testsRunOk / this.totalTestsRun;
+    };
+    ReporterDialog.prototype.testError = function (testRun) {
+        this.testsRunWrong++;
+        this.testsRunWrongPercentage = 100 * this.testsRunWrong / this.totalTestsRun;
+    };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
         this.getTestRuns(testCycleId)
             .subscribe(function (testruns) {
+            _this.totalTestsRun = testruns.length;
             testruns.forEach(function (testrun) {
                 _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
@@ -1757,8 +1791,10 @@ var ReporterDialog = /** @class */ (function () {
         if (testSuite) {
             this.setTestRunStatus(testrun, testSuite, userId, actualResults)
                 .subscribe(function (value) {
+                _this.testSuccess(testrun);
                 _this.toastr.success('Test run ' + testrun.fields.name + ' Updated as ' + _this.testSuiteService.getStatus(testSuite));
             }, function (error) {
+                _this.testError(testrun);
                 _this.toastr.error('Test run ' + testrun.fields.name + ' Not updated');
             });
         }
@@ -1865,6 +1901,7 @@ var ReporterDialog = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'reporter-dialog',
             template: __webpack_require__(/*! ./reporter-dialog.component.html */ "./src/app/features/reporter/reporter-dialog.component.html"),
+            styles: [__webpack_require__(/*! ./reporter-dialog.component.scss */ "./src/app/features/reporter/reporter-dialog.component.scss")]
         }),
         __metadata("design:paramtypes", [systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["DialogRef"], _jama__WEBPACK_IMPORTED_MODULE_2__["UsersService"], _jama__WEBPACK_IMPORTED_MODULE_2__["ProjectsService"],
             _jama__WEBPACK_IMPORTED_MODULE_2__["TestplansService"], _jama__WEBPACK_IMPORTED_MODULE_2__["TestrunsService"],
