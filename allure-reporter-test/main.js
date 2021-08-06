@@ -1172,9 +1172,9 @@ var LoginDialog = /** @class */ (function () {
         this.api = api;
         this.toastr = toastr;
         this.parameters = dialog.context;
+        this.isLogged = !!(this.parameters.username && this.parameters.password);
     }
     LoginDialog.prototype.ngOnInit = function () {
-        this.isLogged = !!(this.parameters.username && this.parameters.password);
     };
     LoginDialog.getParameters = function () {
         return new LoginDialogParameters();
@@ -1183,7 +1183,12 @@ var LoginDialog = /** @class */ (function () {
         if (document.body.classList.contains('modal-open')) {
             document.body.classList.remove('modal-open');
         }
-        this.dialog.close({ isLogged: this.isLogged });
+        this.dialog.close({
+            isLogged: this.isLogged,
+            username: this.parameters.username,
+            password: this.parameters.password,
+            server: this.parameters.server
+        });
     };
     LoginDialog.prototype.doGo = function () {
         var _this = this;
