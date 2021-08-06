@@ -1174,8 +1174,6 @@ var LoginDialog = /** @class */ (function () {
         this.parameters = dialog.context;
         this.isLogged = !!(this.parameters.username && this.parameters.password);
     }
-    LoginDialog.prototype.ngOnInit = function () {
-    };
     LoginDialog.getParameters = function () {
         return new LoginDialogParameters();
     };
@@ -1185,8 +1183,8 @@ var LoginDialog = /** @class */ (function () {
         }
         this.dialog.close({
             isLogged: this.isLogged,
-            username: this.parameters.username,
-            password: this.parameters.password,
+            username: this.isLogged ? this.parameters.username : '',
+            password: this.isLogged ? this.parameters.password : '',
             server: this.parameters.server
         });
     };
