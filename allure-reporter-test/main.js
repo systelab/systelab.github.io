@@ -1718,6 +1718,7 @@ var ReporterDialog = /** @class */ (function () {
     ReporterDialog.prototype.doUpdateTestCase = function () {
         var _this = this;
         var testCaseItemType = [26, 59]; // 26 - Test Case CSW ; 59 - Test Case IL
+        this.initTests(this.parameters.testSuites.length);
         this.parameters.testSuites.forEach(function (suite) {
             _this.abstractItemService.getAbstractItems([Number(_this.selectedProjectId)], testCaseItemType, undefined, undefined, undefined, undefined, undefined, [suite.id], ['createdDate.asc'], 0, 1)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (value) {
@@ -1745,11 +1746,10 @@ var ReporterDialog = /** @class */ (function () {
                     };
                     return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase);
                 }));
-            })).subscribe(function (value) {
-                console.log(suite);
+            })).subscribe(function () {
                 _this.testSuccess();
             }, function (error) {
-                // this.testError(suite);
+                _this.testError(suite.name);
             });
         });
     };
@@ -1778,7 +1778,7 @@ var ReporterDialog = /** @class */ (function () {
         var _this = this;
         this.getTestRuns(testCycleId)
             .subscribe(function (testruns) {
-            _this.initTests(testruns);
+            _this.initTests(testSuites.length);
             testruns.forEach(function (testrun) {
                 _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
@@ -1795,7 +1795,7 @@ var ReporterDialog = /** @class */ (function () {
                 _this.testSuccess();
                 // this.toastr.success('Test run ' + testrun.fields.name + ' Updated as ' + this.testSuiteService.getStatus(testSuite));
             }, function (error) {
-                _this.testError(testrun);
+                _this.testError(testrun.fields.name);
                 // this.toastr.error('Test run ' + testrun.fields.name + ' Not updated');
             });
         }
@@ -1886,15 +1886,15 @@ var ReporterDialog = /** @class */ (function () {
         this.testsRunOk++;
         this.testsRunOkPercentage = 100 * this.testsRunOk / this.totalTestsRun;
     };
-    ReporterDialog.prototype.testError = function (testRun) {
+    ReporterDialog.prototype.testError = function (testName) {
         this.testsRunWrong++;
         this.testsRunWrongPercentage = 100 * this.testsRunWrong / this.totalTestsRun;
         this.testsWrong.push({
-            name: testRun.fields.name
+            testName: testName
         });
     };
-    ReporterDialog.prototype.initTests = function (testruns) {
-        this.totalTestsRun = testruns.length;
+    ReporterDialog.prototype.initTests = function (totalTests) {
+        this.totalTestsRun = totalTests;
         this.testsRunOk = 0;
         this.testsRunWrong = 0;
         this.testsRunWrongPercentage = 0;
