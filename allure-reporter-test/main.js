@@ -1116,7 +1116,7 @@ var HelpComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<systelab-dialog-header (close)=\"close()\">Login</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-2\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<label for=\"username\" class=\"col-form-label text-truncate\">Username</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-8\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"parameters.username\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-1\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<label for=\"password\" class=\"col-form-label text-truncate\">Password</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-8\">\r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"parameters.password\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-1\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<label for=\"server\" class=\"col-form-label text-truncate\">Server</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-8\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"server\" name=\"server\" [(ngModel)]=\"parameters.server\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t</form>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn ml-auto\" (click)=\"doGo()\">Save changes</button>\r\n</systelab-dialog-bottom>\r\n"
+module.exports = "<systelab-dialog-header (close)=\"close()\">Login</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-2\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<label for=\"username\" class=\"col-form-label text-truncate\">Username</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-8\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"parameters.username\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-1\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<label for=\"password\" class=\"col-form-label text-truncate\">Password</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-8\">\r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"parameters.password\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-1\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<label for=\"server\" class=\"col-form-label text-truncate\">Server</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-8\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"server\" name=\"server\" [(ngModel)]=\"parameters.server\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t</form>\r\n\t<div>\r\n\t\t<systelab-loading *ngIf=\"isLoading\" [useClassic]=\"false\"></systelab-loading>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn ml-auto\" (click)=\"doGo()\">Save changes</button>\r\n</systelab-dialog-bottom>\r\n"
 
 /***/ }),
 
@@ -1186,6 +1186,7 @@ var LoginDialog = /** @class */ (function () {
         this.dialog = dialog;
         this.api = api;
         this.toastr = toastr;
+        this.isLoading = false;
         this.parameters = dialog.context;
         this.isLogged = !!(this.parameters.username && this.parameters.password);
     }
@@ -1205,6 +1206,7 @@ var LoginDialog = /** @class */ (function () {
     };
     LoginDialog.prototype.doGo = function () {
         var _this = this;
+        this.isLoading = true;
         if (document.body.classList.contains('modal-open')) {
             document.body.classList.remove('modal-open');
         }
@@ -1215,7 +1217,7 @@ var LoginDialog = /** @class */ (function () {
                 password: _this.parameters.password,
                 server: _this.parameters.server
             });
-        }, function () { return _this.isLogged = false; });
+        }, function () { return _this.isLogged = false; }).add(function () { return _this.isLoading = false; });
     };
     LoginDialog.prototype.checkConnection = function () {
         this.api.configuration.username = this.parameters.username;
