@@ -1915,7 +1915,9 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.saveResultTest = function (status, name) {
         this.testsRun[status]++;
-        this.currentTestsRun++;
+        if (status !== resultStatus.FileNotInJama) {
+            this.currentTestsRun++;
+        }
         this.testsRunPercentage = 100 * this.currentTestsRun / this.totalTestsRun;
         if (status !== resultStatus.Passed) {
             this.testsWrong[status].push({ name: name });
