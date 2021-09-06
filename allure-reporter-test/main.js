@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"d-flex flex-column w-100\">\r\n\r\n\t<app-navbar [(toggleResults)]=\"showResults\" [(toggleSummary)]=\"showSummary\" (user)=\"doShowUser(true)\" (report)=\"doShowReport(true)\"></app-navbar>\r\n\r\n\t<div class=\"container\">\r\n\t\t<p></p>\r\n\t\t<file-drop class=\"no-print\" (onFileDrop)=\"fileDrop($event)\">\r\n\t\t\t<div class=\"text-center text-primary\">\r\n\t\t\t\t<i class=\"fa fa-upload\" style=\"font-size:23px;\"></i>\r\n\t\t\t\t<p>Drop your allure files here</p>\r\n\t\t\t</div>\r\n\t\t</file-drop>\r\n\r\n\t\t<help *ngIf=\"testSuites.length===0\"></help>\r\n\t\t<ng-container *ngIf=\"showSummary && showResults\">\r\n\t\t\t<test-summary-table [category]=\"'suite'\" [categoryName]=\"'Test Suite'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'severity'\" [categoryName]=\"'Severity'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'tag'\" [categoryName]=\"'Tag'\"></test-summary-table>\r\n\t\t</ng-container>\r\n\r\n\t\t<div *ngFor=\"let testSuite of testSuites\">\r\n\t\t\t<div class=\"pt-4 mb-1\">\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)==='passed'\" class=\"fa fa-check-circle-o\" style=\"font-size:33px;color:green;\"></i>\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)!=='passed'\" class=\"fa fa-times-circle-o\" style=\"font-size:33px;color:red;\"></i>\r\n\t\t\t\t<h2 class=\"d-inline\">{{testSuite.id}}</h2>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p markdown>{{testSuite.name}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p style=\"white-space: pre-line\" *ngIf=\"showResults\" markdown>{{testSuite.actualResults}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"showResults\">\r\n\t\t\t\t<test-label *ngFor=\"let label of testSuite.testCases[0].labels\" [label]=\"label\"></test-label>\r\n\t\t  </div>\r\n\t\t\t<div class=\"pl-3\">\r\n\t\t\t\t<div *ngFor=\"let test of testSuite.testCases; let j=index\">\r\n\t\t\t\t\t<test-steps [steps]=\"test.steps\" [showResults]=\"showResults\" [action]=\"test.description\" [withHeader]=\"j===0\"></test-steps>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<app-footer class=\"no-print\"></app-footer>\r\n</div>\r\n"
+module.exports = "<div class=\"d-flex flex-column w-100\">\r\n\r\n\t<app-navbar\r\n\t\t[(toggleResults)]=\"showResults\"\r\n\t\t[(toggleSummary)]=\"showSummary\"\r\n\t\t(user)=\"doShowUser(true)\"\r\n\t\t(report)=\"doShowReport(true)\"\r\n\t\t[isLogged]=\"isLogged\">\r\n\t\t[allFilesProcessed]=\"allFilesProcessed\">\r\n\t</app-navbar>\r\n\r\n\t<div class=\"container\">\r\n\t\t<p></p>\r\n\t\t<file-drop class=\"no-print\" (onFileDrop)=\"fileDrop($event)\">\r\n\t\t\t<div class=\"text-center text-primary\">\r\n\t\t\t\t<i class=\"fa fa-upload\" style=\"font-size:23px;\"></i>\r\n\t\t\t\t<p>Drop your allure files here</p>\r\n\t\t\t</div>\r\n\t\t</file-drop>\r\n\r\n\t\t<help *ngIf=\"testSuites.length===0\"></help>\r\n\t\t<ng-container *ngIf=\"showSummary && showResults\">\r\n\t\t\t<test-summary-table [category]=\"'suite'\" [categoryName]=\"'Test Suite'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'severity'\" [categoryName]=\"'Severity'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'tag'\" [categoryName]=\"'Tag'\"></test-summary-table>\r\n\t\t</ng-container>\r\n\r\n\t\t<div *ngFor=\"let testSuite of testSuites\">\r\n\t\t\t<div class=\"pt-4 mb-1\">\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)==='passed'\" class=\"fa fa-check-circle-o\" style=\"font-size:33px;color:green;\"></i>\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)!=='passed'\" class=\"fa fa-times-circle-o\" style=\"font-size:33px;color:red;\"></i>\r\n\t\t\t\t<h2 class=\"d-inline\">{{testSuite.id}}</h2>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p markdown>{{testSuite.name}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p style=\"white-space: pre-line\" *ngIf=\"showResults\" markdown>{{testSuite.actualResults}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"showResults\">\r\n\t\t\t\t<test-label *ngFor=\"let label of testSuite.testCases[0].labels\" [label]=\"label\"></test-label>\r\n\t\t  </div>\r\n\t\t\t<div class=\"pl-3\">\r\n\t\t\t\t<div *ngFor=\"let test of testSuite.testCases; let j=index\">\r\n\t\t\t\t\t<test-steps [steps]=\"test.steps\" [showResults]=\"showResults\" [action]=\"test.description\" [withHeader]=\"j===0\"></test-steps>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<app-footer class=\"no-print\"></app-footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -86,11 +86,28 @@ var AppComponent = /** @class */ (function () {
         this.showReport = false;
         this.username = '';
         this.password = '';
+        this.filesProcessed = 0;
+        this._isLogged = false;
+        this._allFilesProcessed = false;
         this.server = 'https://jama.systelab.net/contour/rest/latest';
         this.numberOfSteps = 1;
         this._showSummary = true;
         this._showResults = true;
     }
+    Object.defineProperty(AppComponent.prototype, "isLogged", {
+        get: function () {
+            return this._isLogged;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "allFilesProcessed", {
+        get: function () {
+            return this._allFilesProcessed;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(AppComponent.prototype, "showSummary", {
         get: function () {
             return this._showSummary;
@@ -151,6 +168,8 @@ var AppComponent = /** @class */ (function () {
                         });
                     });
                     _this.update();
+                    _this.filesProcessed++;
+                    _this._allFilesProcessed = _this.filesProcessed === files.length;
                 };
                 reader.readAsText(info);
             });
@@ -232,6 +251,7 @@ var AppComponent = /** @class */ (function () {
         this.dialogService.showDialog(_features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_4__["LoginDialog"], parameters)
             .subscribe(function (result) {
             if (result) {
+                _this._isLogged = result.isLogged;
                 _this.username = result.username;
                 _this.password = result.password;
                 _this.server = result.server;
@@ -487,7 +507,18 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\r\n\t<a class=\"navbar-brand\" href=\"#\">Allure reporter</a>\r\n\t<div class=\"ml-auto\">\r\n\t</div>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleResults\" [class.btn-danger]=\"!toggleResults\" (click)=\"doResultsClick()\">\r\n\t\t<i class=\"fa fa-check text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleSummary\" [class.btn-danger]=\"!toggleSummary\" (click)=\"doSummaryClick()\">\r\n\t\t<i class=\"fa fa-table text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"btn-primary border rounded ml-2\" type=\"button\" (click)=\"doUserClick()\">\r\n\t\t<i class=\"fa fa-user text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"btn-primary border rounded ml-2\" type=\"button\" (click)=\"doReportClick()\">\r\n\t\t<i class=\"fa fa-upload text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\r\n\t<a class=\"navbar-brand\" href=\"#\">Allure reporter</a>\r\n\t<div class=\"ml-auto\">\r\n\t</div>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleResults\" [class.btn-danger]=\"!toggleResults\" (click)=\"doResultsClick()\">\r\n\t\t<i class=\"fa fa-check text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleSummary\" [class.btn-danger]=\"!toggleSummary\" (click)=\"doSummaryClick()\">\r\n\t\t<i class=\"fa fa-table text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"btn-primary border rounded ml-2\" type=\"button\" (click)=\"doUserClick()\">\r\n\t\t<i class=\"fa fa-user text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button\r\n\t\tclass=\"btn-primary border rounded ml-2\"\r\n\t\t[disabled]=\"!isLogged || !allFilesProcessed\"\r\n\t\t[class.btn-disabled]=\"!isLogged || !allFilesProcessed\"\r\n\t\ttype=\"button\"\r\n\t\t(click)=\"doReportClick()\"\r\n\t>\r\n\t\t<i class=\"fa fa-upload text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n</nav>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/common/navbar/navbar.component.scss":
+/*!*****************************************************!*\
+  !*** ./src/app/common/navbar/navbar.component.scss ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".btn-disabled {\n  opacity: 0.6; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL25hdmJhci9DOlxcUHJvamVjdHNcXG9wZW5Tb3VyY2VcXGFsbHVyZS1yZXBvcnRlci9zcmNcXGFwcFxcY29tbW9uXFxuYXZiYXJcXG5hdmJhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQVksRUFDYiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ0bi1kaXNhYmxlZCB7XHJcbiAgb3BhY2l0eTogMC42O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -538,6 +569,14 @@ var NavbarComponent = /** @class */ (function () {
         __metadata("design:type", Object)
     ], NavbarComponent.prototype, "toggleResults", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NavbarComponent.prototype, "isLogged", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NavbarComponent.prototype, "allFilesProcessed", void 0);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
     ], NavbarComponent.prototype, "toggleResultsChange", void 0);
@@ -560,7 +599,8 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-navbar',
-            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/common/navbar/navbar.component.html")
+            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/common/navbar/navbar.component.html"),
+            styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/common/navbar/navbar.component.scss")]
         })
     ], NavbarComponent);
     return NavbarComponent;
@@ -1094,6 +1134,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! systelab-components/widgets/modal */ "./node_modules/systelab-components/widgets/modal/index.js");
 /* harmony import */ var systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jama_api_projects_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../jama/api/projects.service */ "./src/app/jama/api/projects.service.ts");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1118,6 +1163,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
 var LoginDialogParameters = /** @class */ (function (_super) {
     __extends(LoginDialogParameters, _super);
     function LoginDialogParameters() {
@@ -1133,9 +1182,12 @@ var LoginDialogParameters = /** @class */ (function (_super) {
 }(systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["SystelabModalContext"]));
 
 var LoginDialog = /** @class */ (function () {
-    function LoginDialog(dialog) {
+    function LoginDialog(dialog, api, toastr) {
         this.dialog = dialog;
+        this.api = api;
+        this.toastr = toastr;
         this.parameters = dialog.context;
+        this.isLogged = !!(this.parameters.username && this.parameters.password);
     }
     LoginDialog.getParameters = function () {
         return new LoginDialogParameters();
@@ -1144,24 +1196,53 @@ var LoginDialog = /** @class */ (function () {
         if (document.body.classList.contains('modal-open')) {
             document.body.classList.remove('modal-open');
         }
-        this.dialog.close(null);
+        this.dialog.close({
+            isLogged: this.isLogged,
+            username: this.isLogged ? this.parameters.username : '',
+            password: this.isLogged ? this.parameters.password : '',
+            server: this.parameters.server
+        });
     };
     LoginDialog.prototype.doGo = function () {
+        var _this = this;
         if (document.body.classList.contains('modal-open')) {
             document.body.classList.remove('modal-open');
         }
-        this.dialog.close({
-            username: this.parameters.username,
-            password: this.parameters.password,
-            server: this.parameters.server
-        });
+        this.checkConnection().subscribe(function () {
+            _this.dialog.close({
+                isLogged: true,
+                username: _this.parameters.username,
+                password: _this.parameters.password,
+                server: _this.parameters.server
+            });
+        }, function () { return _this.isLogged = false; });
+    };
+    LoginDialog.prototype.checkConnection = function () {
+        this.api.configuration.username = this.parameters.username;
+        this.api.configuration.password = this.parameters.password;
+        this.api.configuration.basePath = this.parameters.server;
+        return this.api.getProjects(0, 20)
+            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError.bind(this)));
+    };
+    LoginDialog.prototype.handleError = function (error) {
+        if (error.status === 0) {
+            // A client-side or network error occurred. Handle it accordingly.
+            this.toastr.error('Network error occurred:');
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong.
+            this.toastr.error("Jama returned code " + error.status + (error.status === 401 ? ' - wrong username or password' : ''));
+        }
+        // Return an observable with a user-facing error message.
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["throwError"])('Something bad happened; please try again later.');
     };
     LoginDialog = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'login-dialog',
             template: __webpack_require__(/*! ./login-dialog.component.html */ "./src/app/features/login/login-dialog.component.html"),
         }),
-        __metadata("design:paramtypes", [systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["DialogRef"]])
+        __metadata("design:paramtypes", [systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["DialogRef"], _jama_api_projects_service__WEBPACK_IMPORTED_MODULE_2__["ProjectsService"], ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]])
     ], LoginDialog);
     return LoginDialog;
 }());
@@ -1518,7 +1599,7 @@ var TestSummaryTableComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<systelab-dialog-header (close)=\"close()\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"8\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div class=\"row mt-4 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-4 mb-4\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<table class=\"table table-bordered results-table\">\r\n\t\t\t\t<tbody>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Total</td>\r\n\t\t\t\t\t\t<td>{{totalTestsRun}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Correct</td>\r\n\t\t\t\t\t\t<td>{{testsRunOk}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Wrong</td>\r\n\t\t\t\t\t\t<td>{{testsRunWrong}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</tbody>\r\n\t\t\t</table>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12 mt-4\" *ngIf=\"testsRunWrong > 0\">\r\n\t\t\t<h5>Wrong uploads</h5>\r\n\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t<thead>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</thead>\r\n\t\t\t\t<tbody>\r\n\t\t\t\t\t<tr *ngFor=\"let test of testsWrong\">\r\n\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</tbody>\r\n\t\t\t</table>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<div *ngIf=\"totalTestsRun > 0\" class=\"progress allure-progress-bar\" style=\"height: 20px;\">\r\n\t\t<div class=\"progress-bar bg-success\" role=\"progressbar\" [ngStyle]=\"{'width':testsRunOkPercentage + '%'}\"\r\n\t\t\tattr.aria-valuenow=\"{{testsRunOkPercentage}}\" aria-valuenow=\"15\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t{{testsRunOk}} / {{totalTestsRun}}\r\n\t\t</div>\r\n\t\t<div class=\"progress-bar bg-danger\" role=\"progressbar\" role=\"slider\"\r\n\t\t\t[ngStyle]=\"{'width':testsRunWrongPercentage + '%'}\" attr.aria-valuenow=\"{{testsRunWrongPercentage}}\"\r\n\t\t\taria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t{{testsRunWrong}} / {{totalTestsRun}}\r\n\t\t</div>\r\n\t</div>\r\n\t<button type=\"button\" class=\"btn ml-auto\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>"
+module.exports = "<systelab-dialog-header (close)=\"close()\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"8\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div class=\"row mt-4 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-4 mb-4\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<table class=\"table table-bordered results-table\">\r\n\t\t\t\t<tbody>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Total</td>\r\n\t\t\t\t\t\t<td>{{totalTestsRun}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Passed</td>\r\n\t\t\t\t\t\t<td>{{testsRun['passed']}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Failed</td>\r\n\t\t\t\t\t\t<td>{{testsRun['failed']}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Not updated</td>\r\n\t\t\t\t\t\t<td>{{testsRun['NotUpdated']}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td class=\"font-weight-bold\">Not existed</td>\r\n\t\t\t\t\t\t<td>{{testsRun['NotExist']}}</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</tbody>\r\n\t\t\t</table>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12 mt-4\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h4>Wrong uploads</h4>\r\n\t\t\t<div *ngIf=\"testsWrong['failed'].length > 0\">\r\n\t\t\t\t<h5>Failed</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotUpdated'].length > 0\">\r\n\t\t\t\t<h5>Not Updated</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotExist'].length > 0\">\r\n\t\t\t\t<h5>Not Exist</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotExist']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<div *ngIf=\"totalTestsRun > 0\" class=\"progress allure-progress-bar\" style=\"height: 20px;\">\r\n\t\t<div class=\"progress-bar bg-success\" role=\"progressbar\" [ngStyle]=\"{'width':testsRunPercentage + '%'}\"\r\n\t\t\tattr.aria-valuenow=\"{{testsRunPercentage}}\" aria-valuenow=\"15\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t{{currentTestsRun}} / {{totalTestsRun}}\r\n\t\t</div>\r\n\t</div>\r\n\t<button type=\"button\" class=\"btn ml-auto\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>"
 
 /***/ }),
 
@@ -1603,8 +1684,16 @@ var ReporterDialogParameters = /** @class */ (function (_super) {
     return ReporterDialogParameters;
 }(systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["SystelabModalContext"]));
 
+var resultStatus;
+(function (resultStatus) {
+    resultStatus["Passed"] = "passed";
+    resultStatus["Failed"] = "failed";
+    resultStatus["NotUpdated"] = "NotUpdated";
+    resultStatus["NotExists"] = "NotExist";
+})(resultStatus || (resultStatus = {}));
 var ReporterDialog = /** @class */ (function () {
     function ReporterDialog(dialog, usersService, projectsService, testplansService, testrunsService, testSuiteService, toastr, itemsService, abstractItemService) {
+        var _a, _b;
         this.dialog = dialog;
         this.usersService = usersService;
         this.projectsService = projectsService;
@@ -1619,11 +1708,19 @@ var ReporterDialog = /** @class */ (function () {
         this.nameForNewTestCycle = '';
         this.actualResults = '';
         this.totalTestsRun = 0;
-        this.testsRunOk = 0;
-        this.testsRunWrong = 0;
-        this.testsRunWrongPercentage = 0;
-        this.testsRunOkPercentage = 0;
-        this.testsWrong = [];
+        this.currentTestsRun = 0;
+        this.testsRun = (_a = {},
+            _a[resultStatus.Passed] = 0,
+            _a[resultStatus.Failed] = 0,
+            _a[resultStatus.NotUpdated] = 0,
+            _a[resultStatus.NotExists] = 0,
+            _a);
+        this.testsWrong = (_b = {},
+            _b[resultStatus.Failed] = [],
+            _b[resultStatus.NotUpdated] = [],
+            _b[resultStatus.NotExists] = [],
+            _b);
+        this.testsRunPercentage = 0;
         this.parameters = dialog.context;
     }
     ReporterDialog.prototype.ngOnInit = function () {
@@ -1746,11 +1843,7 @@ var ReporterDialog = /** @class */ (function () {
                     };
                     return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase);
                 }));
-            })).subscribe(function () {
-                _this.testSuccess();
-            }, function (error) {
-                _this.testError(suite.name);
-            });
+            })).subscribe();
         });
     };
     ReporterDialog.prototype.doRun = function () {
@@ -1772,7 +1865,11 @@ var ReporterDialog = /** @class */ (function () {
         }
     };
     ReporterDialog.prototype.areResultsReady = function () {
-        return this.testsRunOk + this.testsRunWrong === this.totalTestsRun && this.totalTestsRun > 0;
+        return this.currentTestsRun === this.totalTestsRun && this.totalTestsRun > 0;
+    };
+    ReporterDialog.prototype.areResultsWrong = function () {
+        return this.testsWrong[resultStatus.Failed].length > 0 || this.testsWrong[resultStatus.NotUpdated].length > 0 ||
+            this.testsWrong[resultStatus.NotExists].length > 0;
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
@@ -1792,13 +1889,31 @@ var ReporterDialog = /** @class */ (function () {
         if (testSuite) {
             this.setTestRunStatus(testrun, testSuite, userId, actualResults)
                 .subscribe(function (value) {
-                _this.testSuccess();
+                _this.saveResultTest(_this.testSuiteService.getStatus(testSuite), testrun.fields.name);
                 // this.toastr.success('Test run ' + testrun.fields.name + ' Updated as ' + this.testSuiteService.getStatus(testSuite));
             }, function (error) {
-                _this.testError(testrun.fields.name);
+                _this.saveResultTest(resultStatus.NotUpdated, testrun.fields.name);
                 // this.toastr.error('Test run ' + testrun.fields.name + ' Not updated');
             });
         }
+        else {
+            this.saveResultTest(resultStatus.NotExists, testrun.fields.name);
+        }
+    };
+    ReporterDialog.prototype.saveResultTest = function (status, name) {
+        this.testsRun[status]++;
+        this.currentTestsRun++;
+        this.testsRunPercentage = 100 * this.currentTestsRun / this.totalTestsRun;
+        if (status !== resultStatus.Passed) {
+            this.testsWrong[status].push({ name: name });
+        }
+    };
+    ReporterDialog.prototype.initTests = function (totalTests) {
+        var _this = this;
+        this.totalTestsRun = totalTests;
+        this.currentTestsRun = 0;
+        Object.keys(this.testsRun).forEach(function (testRun) { return _this.testsRun[testRun] = 0; });
+        Object.keys(this.testsWrong).forEach(function (testWrong) { return _this.testsWrong[testWrong] = []; });
     };
     ReporterDialog.prototype.getKeyById = function (testCaseId) {
         return this.itemsService.getItem(testCaseId)
@@ -1881,25 +1996,6 @@ var ReporterDialog = /** @class */ (function () {
                 return value.data[value.data.length - 1].id;
             }
         }));
-    };
-    ReporterDialog.prototype.testSuccess = function () {
-        this.testsRunOk++;
-        this.testsRunOkPercentage = 100 * this.testsRunOk / this.totalTestsRun;
-    };
-    ReporterDialog.prototype.testError = function (testName) {
-        this.testsRunWrong++;
-        this.testsRunWrongPercentage = 100 * this.testsRunWrong / this.totalTestsRun;
-        this.testsWrong.push({
-            testName: testName
-        });
-    };
-    ReporterDialog.prototype.initTests = function (totalTests) {
-        this.totalTestsRun = totalTests;
-        this.testsRunOk = 0;
-        this.testsRunWrong = 0;
-        this.testsRunWrongPercentage = 0;
-        this.testsRunOkPercentage = 0;
-        this.testsWrong = [];
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('projectComboBox'),
