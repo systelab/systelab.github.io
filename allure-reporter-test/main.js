@@ -1693,7 +1693,8 @@ var resultStatus;
     resultStatus["Passed"] = "passed";
     resultStatus["Failed"] = "failed";
     resultStatus["NotUpdated"] = "NotUpdated";
-    resultStatus["NotExists"] = "NotExist";
+    resultStatus["NotExistsJamaInFiles"] = "NotExistJama";
+    resultStatus["FileNotInJama"] = "NotExistFile";
 })(resultStatus || (resultStatus = {}));
 var ReporterDialog = /** @class */ (function () {
     function ReporterDialog(dialog, usersService, projectsService, testplansService, testrunsService, testSuiteService, toastr, itemsService, abstractItemService) {
@@ -1717,12 +1718,14 @@ var ReporterDialog = /** @class */ (function () {
             _a[resultStatus.Passed] = 0,
             _a[resultStatus.Failed] = 0,
             _a[resultStatus.NotUpdated] = 0,
-            _a[resultStatus.NotExists] = 0,
+            _a[resultStatus.NotExistsJamaInFiles] = 0,
+            _a[resultStatus.FileNotInJama] = 0,
             _a);
         this.testsWrong = (_b = {},
             _b[resultStatus.Failed] = [],
             _b[resultStatus.NotUpdated] = [],
-            _b[resultStatus.NotExists] = [],
+            _b[resultStatus.NotExistsJamaInFiles] = [],
+            _b[resultStatus.FileNotInJama] = [],
             _b);
         this.testsRunPercentage = 0;
         this.parameters = dialog.context;
@@ -1873,36 +1876,42 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.areResultsWrong = function () {
         return this.testsWrong[resultStatus.Failed].length > 0 || this.testsWrong[resultStatus.NotUpdated].length > 0 ||
-            this.testsWrong[resultStatus.NotExists].length > 0;
+            this.testsWrong[resultStatus.NotExistsJamaInFiles].length > 0;
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
         this.getTestRuns(testCycleId)
             .subscribe(function (testruns) {
-            _this.initTests(testSuites.length);
+            _this.initTests(testruns.length);
             testruns.forEach(function (testrun) {
                 _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
-                    _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
+                    if (testSuite) {
+                        _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
+                    }
+                    else {
+                        _this.saveResultTest(resultStatus.NotExistsJamaInFiles, testrun.fields.name);
+                    }
                 });
+            });
+            testSuites.forEach(function (testSuite) {
+                var testRun = testruns.find(function (tr) { return tr.id.toString() === testSuite.id || tr.fields.name === testSuite.id; });
+                if (!testRun) {
+                    _this.saveResultTest(resultStatus.FileNotInJama, testSuite.id);
+                }
             });
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
         var _this = this;
-        if (testSuite) {
-            this.setTestRunStatus(testrun, testSuite, userId, actualResults)
-                .subscribe(function (value) {
-                _this.saveResultTest(_this.testSuiteService.getStatus(testSuite), testrun.fields.name);
-                // this.toastr.success('Test run ' + testrun.fields.name + ' Updated as ' + this.testSuiteService.getStatus(testSuite));
-            }, function (error) {
-                _this.saveResultTest(resultStatus.NotUpdated, testrun.fields.name);
-                // this.toastr.error('Test run ' + testrun.fields.name + ' Not updated');
-            });
-        }
-        else {
-            this.saveResultTest(resultStatus.NotExists, testrun.fields.name);
-        }
+        this.setTestRunStatus(testrun, testSuite, userId, actualResults)
+            .subscribe(function (value) {
+            _this.saveResultTest(_this.testSuiteService.getStatus(testSuite), testrun.fields.name);
+            // this.toastr.success('Test run ' + testrun.fields.name + ' Updated as ' + this.testSuiteService.getStatus(testSuite));
+        }, function (error) {
+            _this.saveResultTest(resultStatus.NotUpdated, testrun.fields.name);
+            // this.toastr.error('Test run ' + testrun.fields.name + ' Not updated');
+        });
     };
     ReporterDialog.prototype.saveResultTest = function (status, name) {
         this.testsRun[status]++;
