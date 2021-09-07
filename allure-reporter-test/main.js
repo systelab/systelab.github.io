@@ -1693,7 +1693,7 @@ var resultStatus;
     resultStatus["Passed"] = "passed";
     resultStatus["Failed"] = "failed";
     resultStatus["NotUpdated"] = "NotUpdated";
-    resultStatus["NotExistsJamaInFiles"] = "NotExistJama";
+    resultStatus["NotExistsJamaInFiles"] = "NotExistsJamaInFiles";
     resultStatus["FileNotInJama"] = "FileNotInJama";
 })(resultStatus || (resultStatus = {}));
 var ReporterDialog = /** @class */ (function () {
