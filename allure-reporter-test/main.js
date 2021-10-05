@@ -101,7 +101,7 @@ var AppComponent = /** @class */ (function () {
         this.filesProcessed = 0;
         this.filesProcessedPercentage = 0;
         this.filesDropped = 0;
-        this._isLogged = false;
+        this._isLogged = true;
         this._allFilesProcessed = false;
         this.server = 'https://jama.systelab.net/contour/rest/latest';
         this.numberOfSteps = 1;
@@ -288,22 +288,22 @@ var AppComponent = /** @class */ (function () {
         parameters.password = this.password;
         parameters.server = this.server;
         parameters.testSuites = this.testSuites;
-        if (this.testSuites.length === 0) {
-            this.toastr.error('No test case provided.');
-            return;
-        }
-        if (!parameters.username) {
-            this.toastr.error('No username provided.');
-            return;
-        }
-        if (!parameters.password) {
-            this.toastr.error('No password provided.');
-            return;
-        }
-        if (!parameters.server) {
-            this.toastr.error('No server provided.');
-            return;
-        }
+        // if (this.testSuites.length === 0) {
+        // 	this.toastr.error('No test case provided.');
+        // 	return;
+        // }
+        // if (!parameters.username) {
+        // 	this.toastr.error('No username provided.');
+        // 	return;
+        // }
+        // if (!parameters.password) {
+        // 	this.toastr.error('No password provided.');
+        // 	return;
+        // }
+        // if (!parameters.server) {
+        // 	this.toastr.error('No server provided.');
+        // 	return;
+        // }
         this.dialogService.showDialog(_features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_3__["ReporterDialog"], parameters)
             .subscribe(function (result) {
         });
@@ -485,7 +485,7 @@ module.exports = "\r\n.sm-link {\r\n\tcolor: white !important;\r\n}\r\n\r\n/*# s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"page-footer font-small bg-primary text-light pt-2 pb-2 mt-3\">\r\n\t<div class=\"container-fluid text-center text-md-left\">\r\n\t\t<div class=\"row d-flex\">\r\n\t\t\t<div class=\"col-4\">Version 2.0.0</div>\r\n\t\t\t<div class=\"col-8 text-right\">\r\n\t\t\t\t<a class=\"sm-link ml-0\"><i class=\"fa fa-github white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-twitter white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-google-plus white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-linkedin white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-instagram white-text mr-4\"> </i></a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</footer>\r\n"
+module.exports = "<footer class=\"page-footer font-small bg-primary text-light pt-2 pb-2 mt-3\">\r\n\t<div class=\"container-fluid text-center text-md-left\">\r\n\t\t<div class=\"row d-flex\">\r\n\t\t\t<div class=\"col-4\">Version 3.0.0</div>\r\n\t\t\t<div class=\"col-8 text-right\">\r\n\t\t\t\t<a class=\"sm-link ml-0\"><i class=\"fa fa-github white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-twitter white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-google-plus white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-linkedin white-text mr-4\"> </i></a>\r\n\t\t\t\t<a class=\"sm-link\"><i class=\"fa fa-instagram white-text mr-4\"> </i></a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -1861,9 +1861,13 @@ var ReporterDialog = /** @class */ (function () {
                             _a[tcType] = itemTestCase.data.fields[tcType],
                             _a)
                     };
-                    return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase);
+                    return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (response) {
+                        console.log(response);
+                    }));
                 }));
-            })).subscribe();
+            })).subscribe(function (value) {
+                console.log(value);
+            });
         });
     };
     ReporterDialog.prototype.doRun = function () {
