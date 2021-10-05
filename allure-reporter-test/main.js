@@ -1839,32 +1839,43 @@ var ReporterDialog = /** @class */ (function () {
         this.parameters.testSuites.forEach(function (suite) {
             _this.abstractItemService.getAbstractItems([Number(_this.selectedProjectId)], testCaseItemType, undefined, undefined, undefined, undefined, undefined, [suite.id], ['createdDate.asc'], 0, 1)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (value) {
-                var itemIDTestCase = value.data[0].id;
-                return _this.itemsService.getItem(Number(itemIDTestCase))
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (itemTestCase) {
-                    var _a;
-                    var tcType = 'tc_type$' + itemTestCase.data.itemType;
-                    var testCaseToUpdate = {
-                        'globalId': itemTestCase.data.globalId,
-                        'project': itemTestCase.data.project,
-                        'itemType': itemTestCase.data.itemType,
-                        'childItemType': itemTestCase.data.childItemType,
-                        'location': itemTestCase.data.location,
-                        'fields': (_a = {
-                                'name': itemTestCase.data.fields['name'],
-                                'description': _this.testSuiteService.getDescription(suite.name),
-                                'testCaseSteps': _this.testSuiteService.getTestCaseStepsToUpdate(suite),
-                                'priority': itemTestCase.data.fields['priority'],
-                                'release': itemTestCase.data.fields['release'],
-                                'status': itemTestCase.data.fields['status']
-                            },
-                            _a[tcType] = itemTestCase.data.fields[tcType],
-                            _a)
-                    };
-                    return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (response) {
-                        console.log(response);
+                if (value.data.length > 0) {
+                    var itemIDTestCase_1 = value.data[0].id;
+                    return _this.itemsService.getItem(Number(itemIDTestCase_1))
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (itemTestCase) {
+                        var _a;
+                        var tcType = 'tc_type$' + itemTestCase.data.itemType;
+                        var testCaseToUpdate = {
+                            'globalId': itemTestCase.data.globalId,
+                            'project': itemTestCase.data.project,
+                            'itemType': itemTestCase.data.itemType,
+                            'childItemType': itemTestCase.data.childItemType,
+                            'location': itemTestCase.data.location,
+                            'fields': (_a = {
+                                    'name': itemTestCase.data.fields['name'],
+                                    'description': _this.testSuiteService.getDescription(suite.name),
+                                    'testCaseSteps': _this.testSuiteService.getTestCaseStepsToUpdate(suite),
+                                    'priority': itemTestCase.data.fields['priority'],
+                                    'release': itemTestCase.data.fields['release'],
+                                    'status': itemTestCase.data.fields['status']
+                                },
+                                _a[tcType] = itemTestCase.data.fields[tcType],
+                                _a)
+                        };
+                        return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase_1).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (response) {
+                            if (response.meta && response.meta.status === 'OK') {
+                                _this.saveResultTest(ResultStatus.Passed, suite.id);
+                            }
+                            else {
+                                _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
+                            }
+                            console.log(response);
+                        }));
                     }));
-                }));
+                }
+                else {
+                    _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
+                }
             })).subscribe(function (value) {
                 console.log(value);
             });
