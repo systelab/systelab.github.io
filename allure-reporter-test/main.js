@@ -101,7 +101,7 @@ var AppComponent = /** @class */ (function () {
         this.filesProcessed = 0;
         this.filesProcessedPercentage = 0;
         this.filesDropped = 0;
-        this._isLogged = true;
+        this._isLogged = false;
         this._allFilesProcessed = false;
         this.server = 'https://jama.systelab.net/contour/rest/latest';
         this.numberOfSteps = 1;
@@ -288,22 +288,22 @@ var AppComponent = /** @class */ (function () {
         parameters.password = this.password;
         parameters.server = this.server;
         parameters.testSuites = this.testSuites;
-        // if (this.testSuites.length === 0) {
-        // 	this.toastr.error('No test case provided.');
-        // 	return;
-        // }
-        // if (!parameters.username) {
-        // 	this.toastr.error('No username provided.');
-        // 	return;
-        // }
-        // if (!parameters.password) {
-        // 	this.toastr.error('No password provided.');
-        // 	return;
-        // }
-        // if (!parameters.server) {
-        // 	this.toastr.error('No server provided.');
-        // 	return;
-        // }
+        if (this.testSuites.length === 0) {
+            this.toastr.error('No test case provided.');
+            return;
+        }
+        if (!parameters.username) {
+            this.toastr.error('No username provided.');
+            return;
+        }
+        if (!parameters.password) {
+            this.toastr.error('No password provided.');
+            return;
+        }
+        if (!parameters.server) {
+            this.toastr.error('No server provided.');
+            return;
+        }
         this.dialogService.showDialog(_features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_3__["ReporterDialog"], parameters)
             .subscribe(function (result) {
         });
@@ -2819,7 +2819,7 @@ var ActivitiesService = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/jama/api/api.ts ***!
   \*********************************/
-/*! exports provided: APIS, AbstractitemsService, ActivitiesService, AttachmentsService, BaselinesService, CommentsService, FilesService, FiltersService, ItemsService, ItemtypesService, PicklistoptionsService, PicklistsService, ProjectsService, RelationshipsService, RelationshiptypesService, ReleasesService, SystemService, TagsService, TestcyclesService, TestplansService, TestrunsService, UsergroupsService, UsersService */
+/*! exports provided: ProjectsService, TestplansService, APIS, AbstractitemsService, ActivitiesService, AttachmentsService, BaselinesService, CommentsService, FilesService, FiltersService, ItemsService, ItemtypesService, PicklistoptionsService, PicklistsService, RelationshipsService, RelationshiptypesService, ReleasesService, SystemService, TagsService, TestcyclesService, TestrunsService, UsergroupsService, UsersService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11549,12 +11549,16 @@ var Configuration = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/jama/index.ts ***!
   \*******************************/
-/*! exports provided: APIS, BASE_PATH, COLLECTION_FORMATS, Configuration, ApiModule, AbstractitemsService, ActivitiesService, AttachmentsService, BaselinesService, CommentsService, FilesService, FiltersService, ItemsService, ItemtypesService, PicklistoptionsService, PicklistsService, ProjectsService, RelationshipsService, RelationshiptypesService, ReleasesService, SystemService, TagsService, TestcyclesService, TestplansService, TestrunsService, UsergroupsService, UsersService */
+/*! exports provided: ProjectsService, TestplansService, APIS, BASE_PATH, COLLECTION_FORMATS, Configuration, ApiModule, AbstractitemsService, ActivitiesService, AttachmentsService, BaselinesService, CommentsService, FilesService, FiltersService, ItemsService, ItemtypesService, PicklistoptionsService, PicklistsService, RelationshipsService, RelationshiptypesService, ReleasesService, SystemService, TagsService, TestcyclesService, TestrunsService, UsergroupsService, UsersService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api/api */ "./src/app/jama/api/api.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProjectsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["ProjectsService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TestplansService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["TestplansService"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "APIS", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["APIS"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AbstractitemsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["AbstractitemsService"]; });
@@ -11579,8 +11583,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PicklistsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["PicklistsService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProjectsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["ProjectsService"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RelationshipsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["RelationshipsService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RelationshiptypesService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["RelationshiptypesService"]; });
@@ -11592,8 +11594,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TagsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["TagsService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TestcyclesService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["TestcyclesService"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TestplansService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["TestplansService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TestrunsService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["TestrunsService"]; });
 
