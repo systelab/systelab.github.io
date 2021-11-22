@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"d-flex flex-column w-100\">\r\n\r\n\t<app-navbar\r\n\t\t[(toggleResults)]=\"showResults\"\r\n\t\t[(toggleSummary)]=\"showSummary\"\r\n\t\t(user)=\"doShowUser(true)\"\r\n\t\t(report)=\"doShowReport(true)\"\r\n\t\t[isLogged]=\"isLogged\"\r\n\t\t[allFilesProcessed]=\"allFilesProcessed\">\r\n\t</app-navbar>\r\n\r\n\t<div class=\"container\">\r\n\t\t<p></p>\r\n\t\t<file-drop *ngIf=\"!readingFiles()\" class=\"no-print\" (onFileDrop)=\"fileDrop($event)\">\r\n\t\t\t<div class=\"text-center text-primary\">\r\n\t\t\t\t<i class=\"fa fa-upload\" style=\"font-size:23px;\"></i>\r\n\t\t\t\t<p>Drop your allure files here</p>\r\n\t\t\t</div>\r\n\t\t</file-drop>\r\n\r\n\t\t<div *ngIf=\"readingFiles()\" class=\"progress allure-progress-bar\">\r\n\t\t\t<div class=\"progress-bar bg-info\" role=\"progressbar\" [ngStyle]=\"{'width':filesProcessedPercentage + '%'}\"\r\n\t\t\t\tattr.aria-valuenow=\"{{filesProcessedPercentage}}\" aria-valuenow=\"15\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t\t{{filesProcessed}} / {{filesDropped}}\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<help *ngIf=\"testSuites.length===0\"></help>\r\n\t\t<ng-container *ngIf=\"showSummary && showResults\">\r\n\t\t\t<test-summary-table [category]=\"'suite'\" [categoryName]=\"'Test Suite'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'severity'\" [categoryName]=\"'Severity'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'tag'\" [categoryName]=\"'Tag'\"></test-summary-table>\r\n\t\t</ng-container>\r\n\r\n\t\t<div *ngFor=\"let testSuite of testSuites\">\r\n\t\t\t<div class=\"pt-4 mb-1\">\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)==='passed'\" class=\"fa fa-check-circle-o\" style=\"font-size:33px;color:green;\"></i>\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)!=='passed'\" class=\"fa fa-times-circle-o\" style=\"font-size:33px;color:red;\"></i>\r\n\t\t\t\t<h2 class=\"d-inline\">{{testSuite.id}}</h2>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p markdown>{{testSuite.name}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p style=\"white-space: pre-line\" *ngIf=\"showResults\" markdown>{{testSuite.actualResults}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"showResults\">\r\n\t\t\t\t<test-label *ngFor=\"let label of testSuite.testCases[0].labels\" [label]=\"label\"></test-label>\r\n\t\t  </div>\r\n\t\t\t<div class=\"pl-3\">\r\n\t\t\t\t<div *ngFor=\"let test of testSuite.testCases; let j=index\">\r\n\t\t\t\t\t<test-steps [steps]=\"test.steps\" [showResults]=\"showResults\" [action]=\"test.description\" [withHeader]=\"j===0\"></test-steps>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<app-footer class=\"no-print\"></app-footer>\r\n</div>\r\n"
+module.exports = "<div class=\"d-flex flex-column w-100\">\r\n\r\n\t<app-navbar #navbar\r\n\t\t[(toggleResults)]=\"showResults\"\r\n\t\t[(toggleSummary)]=\"showSummary\"\r\n\t\t(user)=\"doShowUser(true)\"\r\n\t\t(report)=\"doShowReport(true)\"\r\n\t\t[isLogged]=\"isLogged\"\r\n\t\t[allFilesProcessed]=\"allFilesProcessed\">\r\n\t</app-navbar>\r\n\r\n\t<div class=\"container\">\r\n\t\t<p></p>\r\n\t\t<file-drop *ngIf=\"!readingFiles()\" class=\"no-print\" (onFileDrop)=\"fileDrop($event)\">\r\n\t\t\t<div class=\"text-center text-primary\">\r\n\t\t\t\t<i class=\"fa fa-upload\" style=\"font-size:23px;\"></i>\r\n\t\t\t\t<p>Drop your allure files here</p>\r\n\t\t\t</div>\r\n\t\t</file-drop>\r\n\r\n\t\t<help *ngIf=\"testSuites.length===0\"></help>\r\n\t\t<ng-container *ngIf=\"showSummary && showResults\">\r\n\t\t\t<test-summary-table [category]=\"'suite'\" [categoryName]=\"'Test Suite'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'severity'\" [categoryName]=\"'Severity'\"></test-summary-table>\r\n\t\t\t<test-summary-table [category]=\"'tag'\" [categoryName]=\"'Tag'\"></test-summary-table>\r\n\t\t</ng-container>\r\n\r\n\t\t<div *ngFor=\"let testSuite of testSuites\">\r\n\t\t\t<div class=\"pt-4 mb-1\">\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)==='passed'\" class=\"fa fa-check-circle-o\" style=\"font-size:33px;color:green;\"></i>\r\n\t\t\t\t<i *ngIf=\"showResults && testSuiteService.getStatus(testSuite)!=='passed'\" class=\"fa fa-times-circle-o\" style=\"font-size:33px;color:red;\"></i>\r\n\t\t\t\t<h2 class=\"d-inline\">{{testSuite.id}}</h2>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p markdown>{{testSuite.name}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<p style=\"white-space: pre-line\" *ngIf=\"showResults\" markdown>{{testSuite.actualResults}}</p>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"showResults\">\r\n\t\t\t\t<test-label *ngFor=\"let label of testSuite.testCases[0].labels\" [label]=\"label\"></test-label>\r\n\t\t  </div>\r\n\t\t\t<div class=\"pl-3\">\r\n\t\t\t\t<div *ngFor=\"let test of testSuite.testCases; let j=index\">\r\n\t\t\t\t\t<test-steps [steps]=\"test.steps\" [showResults]=\"showResults\" [action]=\"test.description\" [withHeader]=\"j===0\"></test-steps>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<app-footer class=\"no-print\"></app-footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -65,6 +65,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 /* harmony import */ var _service_test_case_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./service/test-case.service */ "./src/app/service/test-case.service.ts");
 /* harmony import */ var _service_test_suite_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./service/test-suite.service */ "./src/app/service/test-suite.service.ts");
+/* harmony import */ var _common_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./common/navbar/navbar.component */ "./src/app/common/navbar/navbar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,6 +75,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -150,6 +152,7 @@ var AppComponent = /** @class */ (function () {
         this._allFilesProcessed = false;
         this.filesProcessed = 0;
         this.filesDropped = files.length;
+        this.navbar.go(0);
         for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
             var file = files_1[_i];
             var fileEntry = file.fileEntry;
@@ -189,6 +192,7 @@ var AppComponent = /** @class */ (function () {
                         _this.filesProcessed++;
                         _this.filesProcessedPercentage = 100 * _this.filesProcessed / _this.filesDropped;
                         _this._allFilesProcessed = _this.filesProcessed === _this.filesDropped;
+                        _this.navbar.go(_this.filesProcessedPercentage);
                     });
                 };
                 reader.readAsText(info);
@@ -312,6 +316,10 @@ var AppComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChildren"])(_features_report_summary_test_summary_table_component__WEBPACK_IMPORTED_MODULE_2__["TestSummaryTableComponent"]),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["QueryList"])
     ], AppComponent.prototype, "summaryList", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('navbar'),
+        __metadata("design:type", _common_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__["NavbarComponent"])
+    ], AppComponent.prototype, "navbar", void 0);
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
@@ -531,7 +539,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\r\n\t<a class=\"navbar-brand\" href=\"#\">Allure reporter</a>\r\n\t<div class=\"ml-auto\">\r\n\t</div>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleResults\" [class.btn-danger]=\"!toggleResults\" (click)=\"doResultsClick()\">\r\n\t\t<i class=\"fa fa-check text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleSummary\" [class.btn-danger]=\"!toggleSummary\" (click)=\"doSummaryClick()\">\r\n\t\t<i class=\"fa fa-table text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"btn-primary border rounded ml-2\" type=\"button\" (click)=\"doUserClick()\">\r\n\t\t<i class=\"fa fa-user text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button\r\n\t\tclass=\"btn-primary border rounded ml-2\"\r\n\t\t[disabled]=\"!isLogged || !allFilesProcessed\"\r\n\t\t[class.btn-disabled]=\"!isLogged || !allFilesProcessed\"\r\n\t\ttype=\"button\"\r\n\t\t(click)=\"doReportClick()\"\r\n\t>\r\n\t\t<i class=\"fa fa-upload text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\r\n\t<a class=\"navbar-brand\" href=\"#\">Allure reporter</a>\r\n\t<div class=\"ml-auto\">\r\n\t</div>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleResults\" [class.btn-danger]=\"!toggleResults\" (click)=\"doResultsClick()\">\r\n\t\t<i class=\"fa fa-check text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"border rounded ml-2\" type=\"button\" [class.btn-primary]=\"toggleSummary\" [class.btn-danger]=\"!toggleSummary\" (click)=\"doSummaryClick()\">\r\n\t\t<i class=\"fa fa-table text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button class=\"btn-primary border rounded ml-2\" type=\"button\" (click)=\"doUserClick()\">\r\n\t\t<i class=\"fa fa-user text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n\t<button\r\n\t\tclass=\"btn-primary border rounded ml-2\"\r\n\t\t[disabled]=\"!isLogged || !allFilesProcessed\"\r\n\t\t[class.btn-disabled]=\"!isLogged || !allFilesProcessed\"\r\n\t\ttype=\"button\"\r\n\t\t(click)=\"doReportClick()\"\r\n\t>\r\n\t\t<i class=\"fa fa-upload text-white mt-1\" style=\"font-size: 23px;\"></i>\r\n\t</button>\r\n</nav>\r\n<div #progress></div>\r\n"
 
 /***/ }),
 
@@ -574,6 +582,14 @@ var NavbarComponent = /** @class */ (function () {
         this.user = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.report = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
+    NavbarComponent.prototype.ngAfterViewInit = function () {
+        if (this.progress) {
+            var options = {
+                target: this.progress.nativeElement
+            };
+            this.nanobar = new Nanobar(options);
+        }
+    };
     NavbarComponent.prototype.doResultsClick = function () {
         this.toggleResults = !this.toggleResults;
         this.toggleResultsChange.emit(this.toggleResults);
@@ -587,6 +603,14 @@ var NavbarComponent = /** @class */ (function () {
     };
     NavbarComponent.prototype.doReportClick = function () {
         this.report.emit();
+    };
+    NavbarComponent.prototype.go = function (n) {
+        if (this.nanobar) {
+            if (n > 100) {
+                n = 100;
+            }
+            this.nanobar.go(n); // size bar 30%
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -620,6 +644,10 @@ var NavbarComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
     ], NavbarComponent.prototype, "report", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('progress'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], NavbarComponent.prototype, "progress", void 0);
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-navbar',
@@ -1625,7 +1653,7 @@ var TestSummaryTableComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<systelab-dialog-header (close)=\"close()\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"8\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div *ngIf=\"totalTestsRun > 0 && !areResultsReady()\">Uploading...</div>\r\n\t<div class=\"row mt-4 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-4 mb-4\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Runs to upload:</span><span class=\"result-number\"> {{totalTestsRun}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Runs uploaded:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['passed'] + testsRun['failed']}} (Pass {{testsRun['passed']}}, Failed {{testsRun['failed']}})</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotUpdated'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that exist in Jama but are not updated due to an error:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotUpdated']}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotExistsJamaInFiles'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that does not exist in Test Cycle in Jama:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotExistsJamaInFiles']}}</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12 mt-4\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h4>Wrong uploads</h4>\r\n\t\t\t<div *ngIf=\"testsWrong['failed'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs with Failed status</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotUpdated'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that exist in Jama but are not updated due to an error</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotExistsJamaInFiles'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that does not exist in Test Cycle in Jama</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotExistsJamaInFiles']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['FileNotInJama'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Number of Test Runs that are pending in the selected Test Cycle</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['FileNotInJama']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<div *ngIf=\"totalTestsRun > 0\" class=\"progress allure-progress-bar\" style=\"height: 20px;\">\r\n\t\t<div class=\"progress-bar bg-info\" role=\"progressbar\" [ngStyle]=\"{'width':testsRunPercentage + '%'}\"\r\n\t\t\tattr.aria-valuenow=\"{{testsRunPercentage}}\" aria-valuenow=\"15\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n\t\t\t{{currentTestsRun}} / {{totalTestsRun}}\r\n\t\t</div>\r\n\t</div>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
+module.exports = "<systelab-dialog-header #header (close)=\"close()\" [withProgressBar]=\"true\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"8\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div *ngIf=\"totalTestsRun > 0 && !areResultsReady()\">Uploading...</div>\r\n\t<div class=\"row mt-4 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-4 mb-4\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Runs to upload:</span><span class=\"result-number\"> {{totalTestsRun}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Runs uploaded:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['passed'] + testsRun['failed']}} (Pass {{testsRun['passed']}}, Failed {{testsRun['failed']}})</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotUpdated'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that exist in Jama but are not updated due to an error:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotUpdated']}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotExistsJamaInFiles'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that does not exist in Test Cycle in Jama:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotExistsJamaInFiles']}}</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12 mt-4\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h4>Wrong uploads</h4>\r\n\t\t\t<div *ngIf=\"testsWrong['failed'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs with Failed status</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotUpdated'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that exist in Jama but are not updated due to an error</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotExistsJamaInFiles'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that does not exist in Test Cycle in Jama</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotExistsJamaInFiles']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['FileNotInJama'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Number of Test Runs that are pending in the selected Test Cycle</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['FileNotInJama']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
 
 /***/ }),
 
@@ -1839,43 +1867,30 @@ var ReporterDialog = /** @class */ (function () {
         this.parameters.testSuites.forEach(function (suite) {
             _this.abstractItemService.getAbstractItems([Number(_this.selectedProjectId)], testCaseItemType, undefined, undefined, undefined, undefined, undefined, [suite.id], ['createdDate.asc'], 0, 1)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (value) {
-                if (value.data.length > 0) {
-                    var itemIDTestCase_1 = value.data[0].id;
-                    return _this.itemsService.getItem(Number(itemIDTestCase_1))
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (itemTestCase) {
-                        var _a;
-                        var tcType = 'tc_type$' + itemTestCase.data.itemType;
-                        var testCaseToUpdate = {
-                            'globalId': itemTestCase.data.globalId,
-                            'project': itemTestCase.data.project,
-                            'itemType': itemTestCase.data.itemType,
-                            'childItemType': itemTestCase.data.childItemType,
-                            'location': itemTestCase.data.location,
-                            'fields': (_a = {
-                                    'name': itemTestCase.data.fields['name'],
-                                    'description': _this.testSuiteService.getDescription(suite.name),
-                                    'testCaseSteps': _this.testSuiteService.getTestCaseStepsToUpdate(suite),
-                                    'priority': itemTestCase.data.fields['priority'],
-                                    'release': itemTestCase.data.fields['release'],
-                                    'status': itemTestCase.data.fields['status']
-                                },
-                                _a[tcType] = itemTestCase.data.fields[tcType],
-                                _a)
-                        };
-                        return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase_1).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (response) {
-                            if (response.meta && response.meta.status === 'OK') {
-                                _this.saveResultTest(ResultStatus.Passed, suite.id);
-                            }
-                            else {
-                                _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
-                            }
-                        }));
-                    }));
-                }
-                else {
-                    _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
-                    return new rxjs__WEBPACK_IMPORTED_MODULE_8__["Observable"]();
-                }
+                var itemIDTestCase = value.data[0].id;
+                return _this.itemsService.getItem(Number(itemIDTestCase))
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (itemTestCase) {
+                    var _a;
+                    var tcType = 'tc_type$' + itemTestCase.data.itemType;
+                    var testCaseToUpdate = {
+                        'globalId': itemTestCase.data.globalId,
+                        'project': itemTestCase.data.project,
+                        'itemType': itemTestCase.data.itemType,
+                        'childItemType': itemTestCase.data.childItemType,
+                        'location': itemTestCase.data.location,
+                        'fields': (_a = {
+                                'name': itemTestCase.data.fields['name'],
+                                'description': _this.testSuiteService.getDescription(suite.name),
+                                'testCaseSteps': _this.testSuiteService.getTestCaseStepsToUpdate(suite),
+                                'priority': itemTestCase.data.fields['priority'],
+                                'release': itemTestCase.data.fields['release'],
+                                'status': itemTestCase.data.fields['status']
+                            },
+                            _a[tcType] = itemTestCase.data.fields[tcType],
+                            _a)
+                    };
+                    return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase);
+                }));
             })).subscribe();
         });
     };
@@ -1945,6 +1960,7 @@ var ReporterDialog = /** @class */ (function () {
             this.currentTestsRun++;
         }
         this.testsRunPercentage = 100 * this.currentTestsRun / this.totalTestsRun;
+        this.header.go(this.testsRunPercentage);
         if (status !== ResultStatus.Passed) {
             this.testsWrong[status].push({ name: name });
         }
@@ -2054,6 +2070,10 @@ var ReporterDialog = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('testGroupComboBox'),
         __metadata("design:type", _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_6__["TestGroupComboBox"])
     ], ReporterDialog.prototype, "testGroupComboBox", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('header'),
+        __metadata("design:type", systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["DialogHeaderComponent"])
+    ], ReporterDialog.prototype, "header", void 0);
     ReporterDialog = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'reporter-dialog',
