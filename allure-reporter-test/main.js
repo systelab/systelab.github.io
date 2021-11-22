@@ -1869,7 +1869,6 @@ var ReporterDialog = /** @class */ (function () {
                             else {
                                 _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
                             }
-                            console.log(response);
                         }));
                     }));
                 }
@@ -1877,9 +1876,7 @@ var ReporterDialog = /** @class */ (function () {
                     _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
                     return new rxjs__WEBPACK_IMPORTED_MODULE_8__["Observable"]();
                 }
-            })).subscribe(function (value) {
-                console.log(value);
-            });
+            })).subscribe();
         });
     };
     ReporterDialog.prototype.doRun = function () {
