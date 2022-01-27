@@ -1939,7 +1939,7 @@ var ReporterDialog = /** @class */ (function () {
                         _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
                     }
                     else {
-                        // this.saveResultTest(ResultStatus.NotExistsJamaInFiles, testrun.fields.name);
+                        _this.saveResultTest(ResultStatus.NotExistsJamaInFiles, testrun.fields.name);
                     }
                 });
             });
@@ -1962,9 +1962,7 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.saveResultTest = function (status, name) {
         this.testsRun[status]++;
-        if (status !== ResultStatus.FileNotInJama) {
-            this.currentTestsRun++;
-        }
+        this.currentTestsRun++;
         this.testsRunPercentage = 100 * this.currentTestsRun / this.totalTestsRun;
         this.header.go(this.testsRunPercentage);
         if (status !== ResultStatus.Passed) {
