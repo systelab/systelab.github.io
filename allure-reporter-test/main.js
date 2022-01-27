@@ -1751,6 +1751,7 @@ var ReporterDialog = /** @class */ (function () {
         this.nameForNewTestCycle = '';
         this.actualResults = '';
         this.totalTestsRun = 0;
+        this.totalSuites = 0;
         this.currentTestsRun = 0;
         this.testsRun = (_a = {},
             _a[ResultStatus.Passed] = 0,
@@ -1852,7 +1853,7 @@ var ReporterDialog = /** @class */ (function () {
     ReporterDialog.prototype.doUpdateTestCase = function () {
         var _this = this;
         var testCaseItemType = [26, 59]; // 26 - Test Case CSW ; 59 - Test Case IL
-        this.initTests(this.parameters.testSuites.length);
+        this.initTests(null, this.parameters.testSuites.length);
         this.parameters.testSuites.forEach(function (suite) {
             _this.abstractItemService.getAbstractItems([Number(_this.selectedProjectId)], testCaseItemType, undefined, undefined, undefined, undefined, undefined, [suite.id], ['createdDate.asc'], 0, 1)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (value) {
@@ -1925,11 +1926,13 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
-        this.initTests(testSuites.length);
         this.getTestRuns(testCycleId)
-            .subscribe(function (testruns) {
-            console.log(testruns);
-            testruns.forEach(function (testrun) {
+            .subscribe(function (tests) {
+            if (tests.startIndex === 0) {
+                _this.initTests(tests.totalResults, testSuites.length);
+            }
+            console.log(tests);
+            tests.testruns.forEach(function (testrun) {
                 _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
                     if (testSuite) {
@@ -1971,9 +1974,10 @@ var ReporterDialog = /** @class */ (function () {
             this.uploading = false;
         }
     };
-    ReporterDialog.prototype.initTests = function (totalTests) {
+    ReporterDialog.prototype.initTests = function (totalTests, totalSuites) {
         var _this = this;
-        this.totalTestsRun = totalTests;
+        this.totalTestsRun = totalTests || totalSuites;
+        this.totalSuites = totalSuites;
         this.currentTestsRun = 0;
         Object.keys(this.testsRun).forEach(function (testRun) { return _this.testsRun[testRun] = 0; });
         Object.keys(this.testsWrong).forEach(function (testWrong) { return _this.testsWrong[testWrong] = []; });
@@ -1990,7 +1994,13 @@ var ReporterDialog = /** @class */ (function () {
         list.push(testCycleId);
         var itemsPerPage = 20;
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["range"])(0, 100)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (currentIndex) { return _this.testrunsService.getTestRuns(list, undefined, undefined, undefined, currentIndex * itemsPerPage, itemsPerPage); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function (value) { return value && value.data && value.data.length > 0; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (value) { return value.data; }));
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (currentIndex) { return _this.testrunsService.getTestRuns(list, undefined, undefined, undefined, currentIndex * itemsPerPage, itemsPerPage); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function (value) { return value && value.data && value.data.length > 0; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (value) {
+            return {
+                testruns: value.data,
+                totalResults: value.meta.pageInfo.totalResults,
+                startIndex: value.meta.pageInfo.startIndex
+            };
+        }));
     };
     ReporterDialog.prototype.setTestRunStatus = function (testRun, testSuite, userId, actualResults) {
         var status;
