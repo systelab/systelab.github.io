@@ -1641,7 +1641,7 @@ var TestSummaryTableComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<systelab-dialog-header #header (close)=\"close()\" [withProgressBar]=\"true\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"8\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div *ngIf=\"uploading && !areResultsReady()\">Uploading...</div>\r\n\t<div class=\"row mt-4 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-4 mb-4\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Suites to upload:</span><span class=\"result-number\"> {{totalTestsRun}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Runs uploaded:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['passed'] + testsRun['failed']}} (Pass {{testsRun['passed']}}, Failed {{testsRun['failed']}})</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotUpdated'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that exist in Jama but are not updated due to an error:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotUpdated']}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotExistsJamaInFiles'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that does not exist in Test Cycle in Jama:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotExistsJamaInFiles']}}</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12 mt-4\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h4>Wrong uploads</h4>\r\n\t\t\t<div *ngIf=\"testsWrong['failed'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs with Failed status</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotUpdated'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that exist in Jama but are not updated due to an error</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['NotExistsJamaInFiles'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that does not exist in Test Cycle in Jama</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['NotExistsJamaInFiles']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsWrong['FileNotInJama'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Number of Test Runs that are pending in the selected Test Cycle</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsWrong['FileNotInJama']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
+module.exports = "<systelab-dialog-header #header (close)=\"close()\" [withProgressBar]=\"true\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"8\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div *ngIf=\"uploading && !areResultsReady()\">Uploading...</div>\r\n\t<div class=\"row mt-4 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-4 mb-4\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Suites to upload:</span><span class=\"result-number\"> {{totalTestsRun}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Runs uploaded:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['passed'] + testsRun['failed']}} (Pass {{testsRun['passed']}}, Failed {{testsRun['failed']}})</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotUpdated'] > 0\">\r\n\t\t\t\t<span>Number of Test Runs that exist in Jama but are not updated due to an error:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotUpdated']}}</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12 mt-4\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h4>Wrong uploads</h4>\r\n\t\t\t<div *ngIf=\"testsUpload['failed'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs with Failed status</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsUpload['NotUpdated'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Test Runs that exist in Jama but are not updated due to an error</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsUpload['FileNotInJama'].length > 0\">\r\n\t\t\t\t<h5 class=\"text-secondary\">Number of Test Runs that are pending in the selected Test Cycle</h5>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['FileNotInJama']\">\r\n\t\t\t\t\t\t\t<td>{{test.name}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
 
 /***/ }),
 
@@ -1730,6 +1730,7 @@ var ResultStatus;
 (function (ResultStatus) {
     ResultStatus["Passed"] = "passed";
     ResultStatus["Failed"] = "failed";
+    ResultStatus["Blocked"] = "blocked";
     ResultStatus["NotUpdated"] = "NotUpdated";
     ResultStatus["NotExistsJamaInFiles"] = "NotExistsJamaInFiles";
     ResultStatus["FileNotInJama"] = "FileNotInJama";
@@ -1760,10 +1761,10 @@ var ReporterDialog = /** @class */ (function () {
             _a[ResultStatus.NotExistsJamaInFiles] = 0,
             _a[ResultStatus.FileNotInJama] = 0,
             _a);
-        this.testsWrong = (_b = {},
+        this.testsUpload = (_b = {},
+            _b[ResultStatus.Passed] = [],
             _b[ResultStatus.Failed] = [],
             _b[ResultStatus.NotUpdated] = [],
-            _b[ResultStatus.NotExistsJamaInFiles] = [],
             _b[ResultStatus.FileNotInJama] = [],
             _b);
         this.uploading = false;
@@ -1921,14 +1922,13 @@ var ReporterDialog = /** @class */ (function () {
         return this.currentTestsRun === this.totalTestsRun && this.totalTestsRun > 0;
     };
     ReporterDialog.prototype.areResultsWrong = function () {
-        return this.testsWrong[ResultStatus.Failed].length > 0 || this.testsWrong[ResultStatus.NotUpdated].length > 0 ||
-            this.testsWrong[ResultStatus.NotExistsJamaInFiles].length > 0;
+        return this.testsUpload[ResultStatus.Failed].length > 0 || this.testsUpload[ResultStatus.NotUpdated].length > 0;
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
         this.getTestRuns(testCycleId)
             .subscribe(function (tests) {
-            if (tests.startIndex === 0) {
+            if (tests.pageInfo.startIndex === 0) {
                 _this.initTests(tests.totalResults, testSuites.length);
             }
             console.log(tests);
@@ -1943,12 +1943,18 @@ var ReporterDialog = /** @class */ (function () {
                     }
                 });
             });
-            // testSuites.forEach(testSuite => {
-            // 	const testRun = testruns.find(tr => tr.id.toString() === testSuite.id || tr.fields.name === testSuite.id);
-            // 	if (!testRun) {
-            // 		this.saveResultTest(ResultStatus.FileNotInJama, testSuite.id);
-            // 	}
-            // });
+            // No more tests
+            if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
+                testSuites.forEach(function (testSuite) {
+                    if (!_this.testsUpload[ResultStatus.Passed].includes(testSuite.name) &&
+                        !_this.testsUpload[ResultStatus.NotUpdated].includes(testSuite.name) &&
+                        !_this.testsUpload[ResultStatus.Failed].includes(testSuite.name) &&
+                        !_this.testsUpload[ResultStatus.Passed].includes(testSuite.name)) {
+                        _this.testsUpload[ResultStatus.FileNotInJama].push(testSuite.name);
+                        _this.testsRun[ResultStatus.FileNotInJama]++;
+                    }
+                });
+            }
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
@@ -1965,8 +1971,11 @@ var ReporterDialog = /** @class */ (function () {
         this.currentTestsRun++;
         this.testsRunPercentage = 100 * this.currentTestsRun / this.totalTestsRun;
         this.header.go(this.testsRunPercentage);
-        if (status !== ResultStatus.Passed) {
-            this.testsWrong[status].push({ name: name });
+        if (status === ResultStatus.Passed || status === ResultStatus.NotUpdated) {
+            this.totalSuites++;
+        }
+        if (status !== ResultStatus.Blocked) {
+            this.testsUpload[status].push({ name: name });
         }
         if (this.areResultsReady()) {
             this.uploading = false;
@@ -1978,7 +1987,7 @@ var ReporterDialog = /** @class */ (function () {
         this.totalSuites = totalSuites;
         this.currentTestsRun = 0;
         Object.keys(this.testsRun).forEach(function (testRun) { return _this.testsRun[testRun] = 0; });
-        Object.keys(this.testsWrong).forEach(function (testWrong) { return _this.testsWrong[testWrong] = []; });
+        Object.keys(this.testsUpload).forEach(function (testWrong) { return _this.testsUpload[testWrong] = []; });
     };
     ReporterDialog.prototype.getKeyById = function (testCaseId) {
         return this.itemsService.getItem(testCaseId)
@@ -1996,7 +2005,7 @@ var ReporterDialog = /** @class */ (function () {
             return {
                 testruns: value.data,
                 totalResults: value.meta.pageInfo.totalResults,
-                startIndex: value.meta.pageInfo.startIndex
+                pageInfo: value.meta.pageInfo
             };
         }));
     };
