@@ -1928,6 +1928,7 @@ var ReporterDialog = /** @class */ (function () {
         this.initTests(testSuites.length);
         this.getTestRuns(testCycleId)
             .subscribe(function (testruns) {
+            console.log(testruns);
             testruns.forEach(function (testrun) {
                 _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
@@ -1939,12 +1940,12 @@ var ReporterDialog = /** @class */ (function () {
                     }
                 });
             });
-            testSuites.forEach(function (testSuite) {
-                var testRun = testruns.find(function (tr) { return tr.id.toString() === testSuite.id || tr.fields.name === testSuite.id; });
-                if (!testRun) {
-                    _this.saveResultTest(ResultStatus.FileNotInJama, testSuite.id);
-                }
-            });
+            // testSuites.forEach(testSuite => {
+            // 	const testRun = testruns.find(tr => tr.id.toString() === testSuite.id || tr.fields.name === testSuite.id);
+            // 	if (!testRun) {
+            // 		this.saveResultTest(ResultStatus.FileNotInJama, testSuite.id);
+            // 	}
+            // });
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
