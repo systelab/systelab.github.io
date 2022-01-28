@@ -1931,7 +1931,7 @@ var ReporterDialog = /** @class */ (function () {
                 _this.initTests(tests.totalResults, testSuites.length);
             }
             tests.testruns.forEach(function (testrun) {
-                _this.getKeyById(testrun.fields.testCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(function (key) {
+                _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
                     if (testSuite) {
                         _this.testsUpload[ResultStatus.FileNotInJama].splice(_this.testsUpload[ResultStatus.FileNotInJama].indexOf(testSuite.name), 1);
@@ -1940,7 +1940,7 @@ var ReporterDialog = /** @class */ (function () {
                     else {
                         _this.saveResultTest(ResultStatus.FileNotInJama, testrun.fields.name);
                     }
-                }));
+                });
             });
         });
     };
