@@ -1852,6 +1852,7 @@ var ReporterDialog = /** @class */ (function () {
     ReporterDialog.prototype.doUpdateTestCase = function () {
         var _this = this;
         var testCaseItemType = [26, 59]; // 26 - Test Case CSW ; 59 - Test Case IL
+        this.uploading = true;
         this.initTests(null, this.parameters.testSuites.length);
         this.parameters.testSuites.forEach(function (suite) {
             _this.abstractItemService.getAbstractItems([Number(_this.selectedProjectId)], testCaseItemType, undefined, undefined, undefined, undefined, undefined, [suite.id], ['createdDate.asc'], 0, 1)
