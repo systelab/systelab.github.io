@@ -1932,8 +1932,9 @@ var ReporterDialog = /** @class */ (function () {
             if (tests.pageInfo.startIndex === 0) {
                 _this.initTests(tests.totalResults, testSuites.length);
             }
+            var getKeyIdObservables = [];
             tests.testruns.forEach(function (testrun) {
-                _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
+                getKeyIdObservables.push(_this.getKeyById(testrun.fields.testCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
                     if (testSuite) {
                         _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
@@ -1941,20 +1942,23 @@ var ReporterDialog = /** @class */ (function () {
                     else {
                         _this.saveResultTest(ResultStatus.NotExistsJamaInFiles, testrun.fields.name);
                     }
-                });
+                })));
             });
-            // No more tests
-            if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
-                testSuites.forEach(function (testSuite) {
-                    if (!_this.testsUpload[ResultStatus.Passed].includes(testSuite.name) &&
-                        !_this.testsUpload[ResultStatus.NotUpdated].includes(testSuite.name) &&
-                        !_this.testsUpload[ResultStatus.Failed].includes(testSuite.name) &&
-                        !_this.testsUpload[ResultStatus.Passed].includes(testSuite.name)) {
-                        _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
-                        _this.testsRun[ResultStatus.FileNotInJama]++;
-                    }
-                });
-            }
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(getKeyIdObservables).subscribe(function () {
+                // No more tests
+                if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
+                    testSuites.forEach(function (testSuite) {
+                        if (!_this.testsUpload[ResultStatus.Passed].includes(testSuite.name) &&
+                            !_this.testsUpload[ResultStatus.NotUpdated].includes(testSuite.name) &&
+                            !_this.testsUpload[ResultStatus.Failed].includes(testSuite.name) &&
+                            !_this.testsUpload[ResultStatus.Passed].includes(testSuite.name)) {
+                            _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
+                            _this.testsRun[ResultStatus.FileNotInJama]++;
+                        }
+                    });
+                    _this.uploading = false;
+                }
+            });
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
