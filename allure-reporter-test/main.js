@@ -1946,18 +1946,19 @@ var ReporterDialog = /** @class */ (function () {
                     }
                 })));
             });
+        }, function (err) { return console.log(err); }, function () {
             // No more tests
-            if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
-                Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(getKeyIdObservables).subscribe(function () {
-                    testSuites.forEach(function (testSuite) {
-                        if (!_this.testsProcessed[ResultStatus.Passed].includes(testSuite.name)) {
-                            _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
-                            _this.testsRun[ResultStatus.FileNotInJama]++;
-                        }
-                    });
-                    _this.uploading = false;
+            // if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(getKeyIdObservables).subscribe(function () {
+                testSuites.forEach(function (testSuite) {
+                    if (!_this.testsProcessed[ResultStatus.Passed].includes(testSuite.name)) {
+                        _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
+                        _this.testsRun[ResultStatus.FileNotInJama]++;
+                    }
                 });
-            }
+                _this.uploading = false;
+            });
+            // }
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
