@@ -1927,8 +1927,8 @@ var ReporterDialog = /** @class */ (function () {
         var _this = this;
         this.getTestRuns(testCycleId).subscribe(function (tests) {
             if (tests.pageInfo.startIndex === 0) {
-                _this.testsUpload[ResultStatus.FileNotInJama] = testSuites.map(function (ts) { return ts.id; });
                 _this.initTests(tests.totalResults, testSuites.length);
+                _this.testsUpload[ResultStatus.FileNotInJama] = testSuites.map(function (ts) { return ts.id; });
             }
             tests.testruns.forEach(function (testrun) {
                 _this.getKeyById(testrun.fields.testCase).subscribe(function (key) {
