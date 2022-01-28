@@ -1946,9 +1946,9 @@ var ReporterDialog = /** @class */ (function () {
                     }
                 })));
             });
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(getKeyIdObservables).subscribe(function () {
-                // No more tests
-                if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
+            // No more tests
+            if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
+                Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(getKeyIdObservables).subscribe(function () {
                     testSuites.forEach(function (testSuite) {
                         if (!_this.testsProcessed[ResultStatus.Passed].includes(testSuite.name)) {
                             _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
@@ -1956,8 +1956,8 @@ var ReporterDialog = /** @class */ (function () {
                         }
                     });
                     _this.uploading = false;
-                }
-            });
+                });
+            }
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
