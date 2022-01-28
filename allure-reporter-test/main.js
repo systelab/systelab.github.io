@@ -1925,9 +1925,9 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
-        this.testsUpload[ResultStatus.FileNotInJama] = testSuites.map(function (ts) { return ts.id; });
         this.getTestRuns(testCycleId).subscribe(function (tests) {
             if (tests.pageInfo.startIndex === 0) {
+                _this.testsUpload[ResultStatus.FileNotInJama] = testSuites.map(function (ts) { return ts.id; });
                 _this.initTests(tests.totalResults, testSuites.length);
             }
             tests.testruns.forEach(function (testrun) {
