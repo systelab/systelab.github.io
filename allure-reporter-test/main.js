@@ -1928,12 +1928,12 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
+        var getKeyIdObservables = [];
         this.getTestRuns(testCycleId)
             .subscribe(function (tests) {
             if (tests.pageInfo.startIndex === 0) {
                 _this.initTests(tests.totalResults, testSuites.length);
             }
-            var getKeyIdObservables = [];
             tests.testruns.forEach(function (testrun) {
                 getKeyIdObservables.push(_this.getKeyById(testrun.fields.testCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
