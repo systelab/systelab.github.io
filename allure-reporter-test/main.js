@@ -1754,6 +1754,7 @@ var ReporterDialog = /** @class */ (function () {
         this.totalTestsRun = 0;
         this.totalSuites = 0;
         this.currentTestsRun = 0;
+        this.testsProcessed = [];
         this.testsRun = (_a = {},
             _a[ResultStatus.Passed] = 0,
             _a[ResultStatus.Failed] = 0,
@@ -1937,6 +1938,7 @@ var ReporterDialog = /** @class */ (function () {
                 getKeyIdObservables.push(_this.getKeyById(testrun.fields.testCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
                     if (testSuite) {
+                        _this.testsProcessed.push(testSuite.name);
                         _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
                     }
                     else {
@@ -1948,10 +1950,7 @@ var ReporterDialog = /** @class */ (function () {
                 // No more tests
                 if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
                     testSuites.forEach(function (testSuite) {
-                        if (!_this.testsUpload[ResultStatus.Passed].includes(testSuite.name) &&
-                            !_this.testsUpload[ResultStatus.NotUpdated].includes(testSuite.name) &&
-                            !_this.testsUpload[ResultStatus.Failed].includes(testSuite.name) &&
-                            !_this.testsUpload[ResultStatus.Passed].includes(testSuite.name)) {
+                        if (!_this.testsProcessed[ResultStatus.Passed].includes(testSuite.name)) {
                             _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
                             _this.testsRun[ResultStatus.FileNotInJama]++;
                         }
@@ -1987,6 +1986,7 @@ var ReporterDialog = /** @class */ (function () {
         this.totalTestsRun = totalTests || totalSuites;
         this.totalSuites = totalSuites;
         this.currentTestsRun = 0;
+        this.testsProcessed = [];
         Object.keys(this.testsRun).forEach(function (testRun) { return _this.testsRun[testRun] = 0; });
         Object.keys(this.testsUpload).forEach(function (testWrong) { return _this.testsUpload[testWrong] = []; });
     };
