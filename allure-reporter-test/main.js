@@ -1732,7 +1732,6 @@ var ResultStatus;
     ResultStatus["Failed"] = "failed";
     ResultStatus["Blocked"] = "blocked";
     ResultStatus["NotUpdated"] = "NotUpdated";
-    ResultStatus["NotExistsJamaInFiles"] = "NotExistsJamaInFiles";
     ResultStatus["FileNotInJama"] = "FileNotInJama";
 })(ResultStatus || (ResultStatus = {}));
 var ReporterDialog = /** @class */ (function () {
@@ -1754,12 +1753,10 @@ var ReporterDialog = /** @class */ (function () {
         this.totalTestsRun = 0;
         this.totalSuites = 0;
         this.currentTestsRun = 0;
-        this.testsProcessed = [];
         this.testsRun = (_a = {},
             _a[ResultStatus.Passed] = 0,
             _a[ResultStatus.Failed] = 0,
             _a[ResultStatus.NotUpdated] = 0,
-            _a[ResultStatus.NotExistsJamaInFiles] = 0,
             _a[ResultStatus.FileNotInJama] = 0,
             _a);
         this.testsUpload = (_b = {},
@@ -1928,37 +1925,23 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
         var _this = this;
-        var getKeyIdObservables = [];
-        this.getTestRuns(testCycleId)
-            .subscribe(function (tests) {
+        this.testsUpload[ResultStatus.FileNotInJama] = testSuites.map(function (ts) { return ts.id; });
+        this.getTestRuns(testCycleId).subscribe(function (tests) {
             if (tests.pageInfo.startIndex === 0) {
                 _this.initTests(tests.totalResults, testSuites.length);
             }
             tests.testruns.forEach(function (testrun) {
-                getKeyIdObservables.push(_this.getKeyById(testrun.fields.testCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(function (key) {
+                _this.getKeyById(testrun.fields.testCase).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(function (key) {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
                     if (testSuite) {
-                        _this.testsProcessed.push(testSuite.name);
+                        _this.testsUpload[ResultStatus.FileNotInJama].splice(_this.testsUpload[ResultStatus.FileNotInJama].indexOf(testSuite.name), 1);
                         _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
                     }
                     else {
-                        _this.saveResultTest(ResultStatus.NotExistsJamaInFiles, testrun.fields.name);
+                        _this.saveResultTest(ResultStatus.FileNotInJama, testrun.fields.name);
                     }
-                })));
+                }));
             });
-        }, function (err) { return console.log(err); }, function () {
-            // No more tests
-            // if (tests.pageInfo.startIndex + tests.pageInfo.resultCount === tests.pageInfo.totalResults) {
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(getKeyIdObservables).subscribe(function () {
-                testSuites.forEach(function (testSuite) {
-                    if (!_this.testsProcessed[ResultStatus.Passed].includes(testSuite.name)) {
-                        _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.id });
-                        _this.testsRun[ResultStatus.FileNotInJama]++;
-                    }
-                });
-                _this.uploading = false;
-            });
-            // }
         });
     };
     ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
@@ -1975,8 +1958,8 @@ var ReporterDialog = /** @class */ (function () {
         this.currentTestsRun++;
         this.testsRunPercentage = 100 * this.currentTestsRun / this.totalTestsRun;
         this.header.go(this.testsRunPercentage);
-        if (status !== ResultStatus.Blocked) {
-            this.testsUpload[status].push({ name: name });
+        if (status !== ResultStatus.Blocked && status !== ResultStatus.FileNotInJama) {
+            this.testsUpload[status].push(name);
         }
         if (this.areResultsReady()) {
             this.uploading = false;
@@ -1987,7 +1970,6 @@ var ReporterDialog = /** @class */ (function () {
         this.totalTestsRun = totalTests || totalSuites;
         this.totalSuites = totalSuites;
         this.currentTestsRun = 0;
-        this.testsProcessed = [];
         Object.keys(this.testsRun).forEach(function (testRun) { return _this.testsRun[testRun] = 0; });
         Object.keys(this.testsUpload).forEach(function (testWrong) { return _this.testsUpload[testWrong] = []; });
     };
