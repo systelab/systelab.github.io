@@ -1950,7 +1950,7 @@ var ReporterDialog = /** @class */ (function () {
                         !_this.testsUpload[ResultStatus.NotUpdated].includes(testSuite.name) &&
                         !_this.testsUpload[ResultStatus.Failed].includes(testSuite.name) &&
                         !_this.testsUpload[ResultStatus.Passed].includes(testSuite.name)) {
-                        _this.testsUpload[ResultStatus.FileNotInJama].push(testSuite.name);
+                        _this.testsUpload[ResultStatus.FileNotInJama].push({ name: testSuite.name });
                         _this.testsRun[ResultStatus.FileNotInJama]++;
                     }
                 });
