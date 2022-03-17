@@ -55,6 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_test_case_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./service/test-case.service */ "./src/app/service/test-case.service.ts");
 /* harmony import */ var _service_test_suite_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./service/test-suite.service */ "./src/app/service/test-suite.service.ts");
 /* harmony import */ var _common_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./common/navbar/navbar.component */ "./src/app/common/navbar/navbar.component.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,6 +65,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -94,7 +96,7 @@ var AppComponent = /** @class */ (function () {
         this.filesDropped = 0;
         this._isLogged = false;
         this._allFilesProcessed = false;
-        this.server = 'https://jama.systelab.net/contour/rest/latest';
+        this.server = _environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].jamaUrl;
         this.numberOfSteps = 1;
         this._showSummary = true;
         this._showResults = true;
@@ -355,28 +357,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_test_cycle_combobox_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/test-cycle-combobox.component */ "./src/app/components/test-cycle-combobox.component.ts");
 /* harmony import */ var _components_test_plan_combobox_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/test-plan-combobox.component */ "./src/app/components/test-plan-combobox.component.ts");
 /* harmony import */ var _components_project_combobox_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/project-combobox.component */ "./src/app/components/project-combobox.component.ts");
-/* harmony import */ var _features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./features/reporter/reporter-dialog.component */ "./src/app/features/reporter/reporter-dialog.component.ts");
-/* harmony import */ var _features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./features/login/login-dialog.component */ "./src/app/features/login/login-dialog.component.ts");
-/* harmony import */ var _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/test-group-combobox.component */ "./src/app/components/test-group-combobox.component.ts");
-/* harmony import */ var systelab_components__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! systelab-components */ "./node_modules/systelab-components/widgets/systelab-components.module.js");
-/* harmony import */ var systelab_components__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(systelab_components__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var systelab_preferences__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! systelab-preferences */ "./node_modules/systelab-preferences/lib/systelab-preferences.module.js");
-/* harmony import */ var systelab_preferences__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(systelab_preferences__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var systelab_translate__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! systelab-translate */ "./node_modules/systelab-translate/lib/systelab-translate.module.js");
-/* harmony import */ var systelab_translate__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(systelab_translate__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! systelab-components/widgets/grid/contextmenu/grid-header-context-menu.component */ "./node_modules/systelab-components/widgets/grid/contextmenu/grid-header-context-menu.component.js");
-/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! systelab-components/widgets/modal */ "./node_modules/systelab-components/widgets/modal/index.js");
-/* harmony import */ var systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _features_help_help_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./features/help/help.component */ "./src/app/features/help/help.component.ts");
-/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! systelab-components/widgets/grid/contextmenu/grid-context-menu-cell-renderer.component */ "./node_modules/systelab-components/widgets/grid/contextmenu/grid-context-menu-cell-renderer.component.js");
-/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_29__);
+/* harmony import */ var _components_release_combobox_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/release-combobox.component */ "./src/app/components/release-combobox.component.ts");
+/* harmony import */ var _features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./features/reporter/reporter-dialog.component */ "./src/app/features/reporter/reporter-dialog.component.ts");
+/* harmony import */ var _features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./features/login/login-dialog.component */ "./src/app/features/login/login-dialog.component.ts");
+/* harmony import */ var _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/test-group-combobox.component */ "./src/app/components/test-group-combobox.component.ts");
+/* harmony import */ var systelab_components__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! systelab-components */ "./node_modules/systelab-components/widgets/systelab-components.module.js");
+/* harmony import */ var systelab_components__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(systelab_components__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var systelab_preferences__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! systelab-preferences */ "./node_modules/systelab-preferences/lib/systelab-preferences.module.js");
+/* harmony import */ var systelab_preferences__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(systelab_preferences__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var systelab_translate__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! systelab-translate */ "./node_modules/systelab-translate/lib/systelab-translate.module.js");
+/* harmony import */ var systelab_translate__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(systelab_translate__WEBPACK_IMPORTED_MODULE_26__);
+/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! systelab-components/widgets/grid/contextmenu/grid-header-context-menu.component */ "./node_modules/systelab-components/widgets/grid/contextmenu/grid-header-context-menu.component.js");
+/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! systelab-components/widgets/modal */ "./node_modules/systelab-components/widgets/modal/index.js");
+/* harmony import */ var systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _features_help_help_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./features/help/help.component */ "./src/app/features/help/help.component.ts");
+/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! systelab-components/widgets/grid/contextmenu/grid-context-menu-cell-renderer.component */ "./node_modules/systelab-components/widgets/grid/contextmenu/grid-context-menu-cell-renderer.component.js");
+/* harmony import */ var systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_30__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -419,12 +423,12 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                 ngx_file_drop__WEBPACK_IMPORTED_MODULE_4__["FileDropModule"],
-                systelab_preferences__WEBPACK_IMPORTED_MODULE_24__["SystelabPreferencesModule"].forRoot(),
-                systelab_components__WEBPACK_IMPORTED_MODULE_23__["SystelabComponentsModule"].forRoot(),
-                systelab_translate__WEBPACK_IMPORTED_MODULE_25__["SystelabTranslateModule"].forRoot(),
+                systelab_preferences__WEBPACK_IMPORTED_MODULE_25__["SystelabPreferencesModule"].forRoot(),
+                systelab_components__WEBPACK_IMPORTED_MODULE_24__["SystelabComponentsModule"].forRoot(),
+                systelab_translate__WEBPACK_IMPORTED_MODULE_26__["SystelabTranslateModule"].forRoot(),
                 ag_grid_angular__WEBPACK_IMPORTED_MODULE_13__["AgGridModule"].withComponents([
-                    systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_29__["GridContextMenuCellRendererComponent"],
-                    systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_26__["GridHeaderContextMenuComponent"]
+                    systelab_components_widgets_grid_contextmenu_grid_context_menu_cell_renderer_component__WEBPACK_IMPORTED_MODULE_30__["GridContextMenuCellRendererComponent"],
+                    systelab_components_widgets_grid_contextmenu_grid_header_context_menu_component__WEBPACK_IMPORTED_MODULE_27__["GridHeaderContextMenuComponent"]
                 ]),
                 ngx_toastr__WEBPACK_IMPORTED_MODULE_16__["ToastrModule"].forRoot(),
                 ngx_markdown__WEBPACK_IMPORTED_MODULE_6__["MarkdownModule"].forRoot()
@@ -437,21 +441,22 @@ var AppModule = /** @class */ (function () {
                 _features_report_summary_test_summary_table_component__WEBPACK_IMPORTED_MODULE_8__["TestSummaryTableComponent"],
                 _common_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__["NavbarComponent"],
                 _common_footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"],
-                _features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_21__["LoginDialog"],
-                _features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_20__["ReporterDialog"],
-                _features_help_help_component__WEBPACK_IMPORTED_MODULE_28__["HelpComponent"],
+                _features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_22__["LoginDialog"],
+                _features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_21__["ReporterDialog"],
+                _features_help_help_component__WEBPACK_IMPORTED_MODULE_29__["HelpComponent"],
                 _components_project_combobox_component__WEBPACK_IMPORTED_MODULE_19__["ProjectComboBox"],
+                _components_release_combobox_component__WEBPACK_IMPORTED_MODULE_20__["ReleaseComboBox"],
                 _components_test_plan_combobox_component__WEBPACK_IMPORTED_MODULE_18__["TestPlanComboBox"],
                 _components_test_cycle_combobox_component__WEBPACK_IMPORTED_MODULE_17__["TestCycleComboBox"],
-                _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_22__["TestGroupComboBox"]
+                _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_23__["TestGroupComboBox"]
             ],
             providers: [
-                systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_27__["MessagePopupService"],
-                systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_27__["DialogService"]
+                systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_28__["MessagePopupService"],
+                systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_28__["DialogService"]
             ],
             entryComponents: [
-                _features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_21__["LoginDialog"],
-                _features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_20__["ReporterDialog"]
+                _features_login_login_dialog_component__WEBPACK_IMPORTED_MODULE_22__["LoginDialog"],
+                _features_reporter_reporter_dialog_component__WEBPACK_IMPORTED_MODULE_21__["ReporterDialog"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
@@ -744,6 +749,124 @@ var ProjectComboBox = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], _jama_api_projects_service__WEBPACK_IMPORTED_MODULE_1__["ProjectsService"]])
     ], ProjectComboBox);
     return ProjectComboBox;
+}(systelab_components_widgets_combobox_abstract_api_combobox_component__WEBPACK_IMPORTED_MODULE_2__["AbstractApiComboBox"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/release-combobox.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/components/release-combobox.component.ts ***!
+  \**********************************************************/
+/*! exports provided: ReleaseComboBox */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReleaseComboBox", function() { return ReleaseComboBox; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var systelab_components_widgets_combobox_abstract_api_combobox_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! systelab-components/widgets/combobox/abstract-api-combobox.component */ "./node_modules/systelab-components/widgets/combobox/abstract-api-combobox.component.js");
+/* harmony import */ var systelab_components_widgets_combobox_abstract_api_combobox_component__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(systelab_components_widgets_combobox_abstract_api_combobox_component__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jama_api_releases_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jama/api/releases.service */ "./src/app/jama/api/releases.service.ts");
+/* harmony import */ var _model_release_data_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/release-data.model */ "./src/app/model/release-data.model.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ReleaseComboBox = /** @class */ (function (_super) {
+    __extends(ReleaseComboBox, _super);
+    function ReleaseComboBox(myRenderer, chref, api) {
+        var _this = _super.call(this, myRenderer, chref) || this;
+        _this.myRenderer = myRenderer;
+        _this.chref = chref;
+        _this.api = api;
+        _this.totalItems = 0;
+        return _this;
+    }
+    Object.defineProperty(ReleaseComboBox.prototype, "project", {
+        get: function () {
+            return this._project;
+        },
+        set: function (value) {
+            this._project = value;
+            this.refresh(null);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ReleaseComboBox.prototype.getInstance = function () {
+        return new _model_release_data_model__WEBPACK_IMPORTED_MODULE_5__["ReleaseData"]();
+    };
+    ReleaseComboBox.prototype.getDescriptionField = function () {
+        return 'name';
+    };
+    ReleaseComboBox.prototype.getCodeField = function () {
+        return '';
+    };
+    ReleaseComboBox.prototype.getIdField = function () {
+        return 'id';
+    };
+    ReleaseComboBox.prototype.getData = function (page, itemsPerPage) {
+        var _this = this;
+        if (this.project) {
+            return this.api.getReleases(this.project, this.getStartAt(page, itemsPerPage), itemsPerPage)
+                .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (value) {
+                _this.totalItems = value.meta.pageInfo.totalResults;
+                return value.data.map(function (p) {
+                    var releaseData = new _model_release_data_model__WEBPACK_IMPORTED_MODULE_5__["ReleaseData"]();
+                    releaseData.id = p.id;
+                    releaseData.name = p.name;
+                    return releaseData;
+                });
+            }));
+        }
+        else {
+            this.totalItems = 0;
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])([]);
+        }
+    };
+    ReleaseComboBox.prototype.getTotalItems = function () {
+        return this.totalItems;
+    };
+    ReleaseComboBox.prototype.getStartAt = function (page, itemsPerPage) {
+        return (page - 1) * itemsPerPage;
+    };
+    ReleaseComboBox = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'release-combobox',
+            template: __webpack_require__(/*! ../../../node_modules/systelab-components/html/abstract-combobox.component.html */ "./node_modules/systelab-components/html/abstract-combobox.component.html")
+        }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], _jama_api_releases_service__WEBPACK_IMPORTED_MODULE_4__["ReleasesService"]])
+    ], ReleaseComboBox);
+    return ReleaseComboBox;
 }(systelab_components_widgets_combobox_abstract_api_combobox_component__WEBPACK_IMPORTED_MODULE_2__["AbstractApiComboBox"]));
 
 
@@ -1641,7 +1764,7 @@ var TestSummaryTableComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<systelab-dialog-header #header (close)=\"close()\" [withProgressBar]=\"true\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"5\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div *ngIf=\"uploading && !areResultsReady()\">Uploading...</div>\r\n\t<div class=\"row mt-1 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-1 mb-2\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Cases to upload:</span><span class=\"result-number\"> {{totalSuites}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Cases uploaded:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['passed'] + testsRun['failed']}} (Pass {{testsRun['passed']}}, Failed {{testsRun['failed']}})</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotUpdated'] > 0\">\r\n\t\t\t\t<span>Number of Test Cases that exist in Jama but are not updated due to an error:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotUpdated']}}</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h6>Wrong uploads</h6>\r\n\t\t\t<div *ngIf=\"testsUpload['failed'].length > 0\">\r\n\t\t\t\t<h6 class=\"text-secondary\">Test Cases with Failed status</h6>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsUpload['NotUpdated'].length > 0\">\r\n\t\t\t\t<h6 class=\"text-secondary\">Test Cases that exist in Jama but are not updated due to an error</h6>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsUpload['FileNotInJama'].length > 0\">\r\n\t\t\t\t<h6 class=\"text-secondary\">Number of Test Cases not found in Jama in the selected Test Cycle</h6>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['FileNotInJama']\">\r\n\t\t\t\t\t\t\t<td>{{test}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Case</button>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
+module.exports = "<systelab-dialog-header #header (close)=\"close()\" [withProgressBar]=\"true\">Report to Jama</systelab-dialog-header>\r\n<div class=\"slab-flex-1 slab-overflow-container container-fluid\">\r\n\r\n\t<form class=\"pt-4\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Project</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<project-combobox #projectComboBox [(id)]=\"selectedProjectId\" [(description)]=\"selectedProjectName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></project-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Plan</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-plan-combobox #testPlanComboBox [(id)]=\"selectedTestPlanId\" [(description)]=\"selectedTestPlanName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-plan-combobox>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Cycle</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-cycle-combobox #testCycleComboBox [(id)]=\"selectedTestCycleId\" [(description)]=\"selectedTestCycleName\"\r\n\t\t\t\t\t[emptyElement]=\"false\"></test-cycle-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label class=\"col-form-label\">Test Group</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<test-group-combobox #testGroupComboBox [multipleSelection]=\"true\"\r\n\t\t\t\t\t[(multipleSelectedItemList)]=\"selectedTestGroups\" [isDisabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t\t</test-group-combobox>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"newtestcycle\" class=\"col-form-label\">New Test Cycle name</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"newtestcycle\" name=\"newtestcycle\" [(ngModel)]=\"nameForNewTestCycle\"\r\n\t\t\t\t\t[disabled]=\"selectedTestCycleId!==undefined\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"executedinversion\" class=\"col-form-label\">Executed in version</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<release-combobox #releaseComboBox [(id)]=\"selectedReleaseId\" [(description)]=\"selectedReleaseName\"\r\n\t\t\t\t\t[emptyElement]=\"true\"></release-combobox>\r\n\t\t\t\t<small id=\"apiWarning\" class=\"form-text text-muted\">\r\n\t\t\t\t\tThis value will be set as the <b>Tested version</b> field for the <b>Test Run</b>.<br/> \t\t\r\n\t\t\t\t\tNote: This feature (setting the version) uses the experimental Rest API. This is subject to change if JAMA version changes.\t\t\t\r\n\t\t\t\t\t  </small>\r\n\t\t\t</div>\t\t\t\r\n\t\t</div>\t\t\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<input type=\"checkbox\" id=\"update-test-case-version\" name=\"updateTestCaseVersion\" [(ngModel)]=\"updateTestCaseVersion\"\r\n\t\t\t\t[disabled]=\"selectedReleaseId!==undefined\"/>\r\n\t\t\t\t<label for=\"update-test-case-version\" class=\"col-form-label\">Update also 'Last Tested Version' field in the corresponding Test Cases</label>\t\t\t\t\r\n\t\t\t</div>\t\t\t\r\n\t\t</div>\t\t\r\n\t\t<div class=\"row mt-2\">\r\n\t\t\t<div class=\"col-md-3\">\r\n\t\t\t\t<label for=\"actualresults\" class=\"col-form-label\">Actual Results</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-9\">\r\n\t\t\t\t<textarea id=\"actualresults\" name=\"actualresults\" class=\"slab-textarea w-100 slab-textarea-vertical-resize\"\r\n\t\t\t\t\trows=\"5\" [(ngModel)]=\"actualResults\"></textarea>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n\t<div *ngIf=\"uploading && !areResultsReady()\">Uploading...</div>\r\n\t<div class=\"row mt-1 mb-4 results-container\" *ngIf=\"areResultsReady()\">\r\n\t\t<div class=\"col-md-12 mt-1 mb-2\">\r\n\t\t\t<h4 class=\"mb-4\">Upload Results</h4>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Cases to upload:</span><span class=\"result-number\"> {{totalSuites}}</span>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\t<span>Total of Test Cases uploaded:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['passed'] + testsRun['failed']}} (Pass {{testsRun['passed']}}, Failed {{testsRun['failed']}})</span>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsRun['NotUpdated'] > 0\">\r\n\t\t\t\t<span>Number of Test Cases that exist in Jama but are not updated due to an error:</span>\r\n\t\t\t\t<span class=\"result-number\"> {{testsRun['NotUpdated']}}</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-12\" *ngIf=\"areResultsWrong()\">\r\n\t\t\t<h6>Wrong uploads</h6>\r\n\t\t\t<div *ngIf=\"testsUpload['failed'].length > 0\">\r\n\t\t\t\t<h6 class=\"text-secondary\">Test Cases with Failed status</h6>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['failed']\">\r\n\t\t\t\t\t\t\t<td>{{test}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsUpload['NotUpdated'].length > 0\">\r\n\t\t\t\t<h6 class=\"text-secondary\">Test Cases that exist in Jama but are not updated due to an error</h6>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['NotUpdated']\">\r\n\t\t\t\t\t\t\t<td>{{test}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"testsUpload['FileNotInJama'].length > 0\">\r\n\t\t\t\t<h6 class=\"text-secondary\">Number of Test Cases not found in Jama in the selected Test Cycle</h6>\r\n\t\t\t\t<table class=\"table table-sm table-striped\">\r\n\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<th scope=\"col\">Test</th>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</thead>\r\n\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr *ngFor=\"let test of testsUpload['FileNotInJama']\">\r\n\t\t\t\t\t\t\t<td>{{test}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<systelab-dialog-bottom>\r\n\t<button type=\"button\" class=\"btn mr-0\" [disabled]=\"!this.selectedProjectId\" (click)=\"doUpdateTestCase()\">Update Test Cases</button>\r\n\t<button type=\"button\" class=\"btn ml-auto\" [disabled]=\"!isValidForm()\" (click)=\"doRun()\">Report</button>\r\n</systelab-dialog-bottom>\r\n"
 
 /***/ }),
 
@@ -1676,11 +1799,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_test_plan_combobox_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/test-plan-combobox.component */ "./src/app/components/test-plan-combobox.component.ts");
 /* harmony import */ var _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/test-group-combobox.component */ "./src/app/components/test-group-combobox.component.ts");
 /* harmony import */ var _components_test_cycle_combobox_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/test-cycle-combobox.component */ "./src/app/components/test-cycle-combobox.component.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _service_test_suite_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../service/test-suite.service */ "./src/app/service/test-suite.service.ts");
+/* harmony import */ var _components_release_combobox_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/release-combobox.component */ "./src/app/components/release-combobox.component.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _service_test_suite_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../service/test-suite.service */ "./src/app/service/test-suite.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1715,6 +1839,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ReporterDialogParameters = /** @class */ (function (_super) {
     __extends(ReporterDialogParameters, _super);
     function ReporterDialogParameters() {
@@ -1735,11 +1860,12 @@ var ResultStatus;
     ResultStatus["FileNotInJama"] = "FileNotInJama";
 })(ResultStatus || (ResultStatus = {}));
 var ReporterDialog = /** @class */ (function () {
-    function ReporterDialog(dialog, usersService, projectsService, testplansService, testrunsService, testSuiteService, toastr, itemsService, abstractItemService) {
+    function ReporterDialog(dialog, usersService, projectsService, releasesService, testplansService, testrunsService, testSuiteService, toastr, itemsService, abstractItemService) {
         var _a, _b;
         this.dialog = dialog;
         this.usersService = usersService;
         this.projectsService = projectsService;
+        this.releasesService = releasesService;
         this.testplansService = testplansService;
         this.testrunsService = testrunsService;
         this.testSuiteService = testSuiteService;
@@ -1747,6 +1873,7 @@ var ReporterDialog = /** @class */ (function () {
         this.itemsService = itemsService;
         this.abstractItemService = abstractItemService;
         this.selectedTestCycleName = 'New Test Cycle';
+        this.updateTestCaseVersion = false;
         this.selectedTestGroups = [];
         this.nameForNewTestCycle = '';
         this.actualResults = '';
@@ -1786,6 +1913,9 @@ var ReporterDialog = /** @class */ (function () {
         this.itemsService.configuration.username = this.parameters.username;
         this.itemsService.configuration.password = this.parameters.password;
         this.itemsService.configuration.basePath = this.parameters.server;
+        this.releasesService.configuration.username = this.parameters.username;
+        this.releasesService.configuration.password = this.parameters.password;
+        this.releasesService.configuration.basePath = this.parameters.server;
         this.abstractItemService.configuration.username = this.parameters.username;
         this.abstractItemService.configuration.password = this.parameters.password;
         this.abstractItemService.configuration.basePath = this.parameters.server;
@@ -1811,6 +1941,7 @@ var ReporterDialog = /** @class */ (function () {
             this.selectedTestPlanId = undefined;
             this.selectedTestPlanName = undefined;
             this.testPlanComboBox.project = value;
+            this.releaseComboBox.project = value;
         },
         enumerable: true,
         configurable: true
@@ -1840,6 +1971,13 @@ var ReporterDialog = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ReporterDialog.prototype, "selectedReleaseId", {
+        set: function (value) {
+            this._selectedReleaseId = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ReporterDialog.getParameters = function () {
         return new ReporterDialogParameters();
     };
@@ -1856,52 +1994,43 @@ var ReporterDialog = /** @class */ (function () {
         this.initTests(null, this.parameters.testSuites.length);
         this.parameters.testSuites.forEach(function (suite) {
             _this.abstractItemService.getAbstractItems([Number(_this.selectedProjectId)], testCaseItemType, undefined, undefined, undefined, undefined, undefined, [suite.id], ['createdDate.asc'], 0, 1)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (value) {
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["mergeMap"])(function (value) {
                 if (value.data.length > 0) {
-                    var itemIDTestCase_1 = value.data[0].id;
-                    return _this.itemsService.getItem(Number(itemIDTestCase_1))
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["mergeMap"])(function (itemTestCase) {
-                        var _a;
-                        var tcType = 'tc_type$' + itemTestCase.data.itemType;
-                        var testCaseToUpdate = {
-                            'globalId': itemTestCase.data.globalId,
-                            'project': itemTestCase.data.project,
-                            'itemType': itemTestCase.data.itemType,
-                            'childItemType': itemTestCase.data.childItemType,
-                            'location': itemTestCase.data.location,
-                            'fields': (_a = {
-                                    'name': itemTestCase.data.fields['name'],
-                                    'description': _this.testSuiteService.getDescription(suite.name),
-                                    'testCaseSteps': _this.testSuiteService.getTestCaseStepsToUpdate(suite),
-                                    'priority': itemTestCase.data.fields['priority'],
-                                    'release': itemTestCase.data.fields['release'],
-                                    'status': itemTestCase.data.fields['status']
-                                },
-                                _a[tcType] = itemTestCase.data.fields[tcType],
-                                _a)
-                        };
-                        return _this.itemsService.putItem(testCaseToUpdate, itemIDTestCase_1).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (response) {
-                            if (response.meta && response.meta.status === 'OK') {
-                                _this.saveResultTest(ResultStatus.Passed, suite.id);
-                            }
-                            else {
-                                _this.saveResultTest(ResultStatus.NotUpdated, suite.id);
-                            }
-                        }));
-                    }));
+                    var itemIDTestCase = value.data[0].id;
+                    _this.saveResultTest(ResultStatus.Passed, suite.id);
+                    return _this.patchTestCase(suite, itemIDTestCase);
                 }
                 else {
                     _this.saveResultTest(ResultStatus.FileNotInJama, suite.id);
-                    return new rxjs__WEBPACK_IMPORTED_MODULE_8__["Observable"]();
+                    return new rxjs__WEBPACK_IMPORTED_MODULE_9__["Observable"]();
                 }
-            })).subscribe();
+            })).subscribe(function (success) {
+                _this.toastr.success('Test cases description and steps updated');
+                _this.uploading = false;
+            }, function (error) {
+                _this.toastr.error('Couldn\'t update the test cases: ' + error.message);
+                _this.uploading = false;
+            });
         });
+    };
+    ReporterDialog.prototype.patchTestCase = function (suite, itemIDTestCase) {
+        var updateDescription = {
+            op: "replace",
+            path: "/fields/description",
+            value: this.testSuiteService.getDescription(suite.name)
+        };
+        var updateSteps = {
+            op: "replace",
+            path: "/fields/testCaseSteps",
+            value: this.testSuiteService.getTestCaseStepsToUpdate(suite)
+        };
+        return this.itemsService.patchItem([updateSteps, updateDescription], itemIDTestCase);
     };
     ReporterDialog.prototype.doRun = function () {
         var _this = this;
         this.uploading = true;
         if (this.selectedTestCycleId !== undefined) {
-            this.updateTestRunsInTheTestCycle(this.selectedTestCycleId, this.parameters.testSuites, this._userId, this.actualResults);
+            this.updateTestRunsInTheTestCycle(this.selectedTestCycleId, this.parameters.testSuites, this._userId, this.actualResults, this._selectedReleaseId);
         }
         else {
             var testGroupsToInclude = this.selectedTestGroups.map(function (a) { return a.id; });
@@ -1909,7 +2038,7 @@ var ReporterDialog = /** @class */ (function () {
                 .subscribe(function (result) {
                 if (result) {
                     _this.toastr.success('Test cycle ' + _this.nameForNewTestCycle + ' created');
-                    _this.updateTestRunsInTheLastCycleOfTheTestPlan(_this.selectedTestPlanId, _this.parameters.testSuites, _this._userId, _this.actualResults);
+                    _this.updateTestRunsInTheLastCycleOfTheTestPlan(_this.selectedTestPlanId, _this.parameters.testSuites, _this._userId, _this.actualResults, _this._selectedReleaseId);
                 }
             }, function (error) {
                 _this.uploading = false;
@@ -1924,7 +2053,7 @@ var ReporterDialog = /** @class */ (function () {
         return this.testsUpload[ResultStatus.Failed].length > 0 || this.testsUpload[ResultStatus.NotUpdated].length > 0 ||
             this.testsUpload[ResultStatus.FileNotInJama].length > 0;
     };
-    ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults) {
+    ReporterDialog.prototype.updateTestRunsInTheTestCycle = function (testCycleId, testSuites, userId, actualResults, executedInVersion) {
         var _this = this;
         this.getTestRuns(testCycleId).subscribe(function (tests) {
             if (tests.pageInfo.startIndex === 0) {
@@ -1936,7 +2065,7 @@ var ReporterDialog = /** @class */ (function () {
                     var testSuite = testSuites.find(function (ts) { return ts.id === key || ts.id === testrun.fields.name; });
                     if (testSuite) {
                         _this.testsUpload[ResultStatus.FileNotInJama].splice(_this.testsUpload[ResultStatus.FileNotInJama].indexOf(testSuite.name), 1);
-                        _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults);
+                        _this.updateTestRunForTestCase(testSuite, testrun, userId, actualResults, executedInVersion);
                     }
                     else {
                         _this.saveResultTest(ResultStatus.FileNotInJama, testrun.fields.name);
@@ -1945,14 +2074,33 @@ var ReporterDialog = /** @class */ (function () {
             });
         });
     };
-    ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults) {
+    ReporterDialog.prototype.updateTestRunForTestCase = function (testSuite, testrun, userId, actualResults, executedInVersion) {
         var _this = this;
-        this.setTestRunStatus(testrun, testSuite, userId, actualResults)
+        this.setTestRunStatus(testrun, testSuite, userId, actualResults, executedInVersion)
             .subscribe(function (value) {
+            if (executedInVersion) {
+                _this.setExecutedInVersion(testrun, executedInVersion, _this.updateTestCaseVersion);
+            }
             _this.saveResultTest(_this.testSuiteService.getStatus(testSuite), testrun.fields.name);
         }, function (error) {
             _this.saveResultTest(ResultStatus.NotUpdated, testrun.fields.name);
         });
+    };
+    ReporterDialog.prototype.setExecutedInVersion = function (testrun, executedInVersion, updateTestCaseVersion) {
+        var updateExecutedInVersion = {
+            op: "add",
+            path: "/fields/tested_version$37",
+            value: executedInVersion
+        };
+        this.testrunsService.patchTestRun([updateExecutedInVersion], testrun.id).subscribe();
+        if (updateTestCaseVersion) {
+            var updateTestCaseLastTestedVersion = {
+                op: "add",
+                path: "/fields/last_tested_version$26",
+                value: executedInVersion
+            };
+            this.itemsService.patchItem([updateTestCaseLastTestedVersion], testrun.fields["testCase"]).subscribe();
+        }
     };
     ReporterDialog.prototype.saveResultTest = function (status, name) {
         this.testsRun[status]++;
@@ -1976,7 +2124,7 @@ var ReporterDialog = /** @class */ (function () {
     };
     ReporterDialog.prototype.getKeyById = function (testCaseId) {
         return this.itemsService.getItem(testCaseId)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (value) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function (value) {
             return value.data.documentKey;
         }));
     };
@@ -1985,8 +2133,8 @@ var ReporterDialog = /** @class */ (function () {
         var list = [];
         list.push(testCycleId);
         var itemsPerPage = 20;
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["range"])(0, 100)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (currentIndex) { return _this.testrunsService.getTestRuns(list, undefined, undefined, undefined, currentIndex * itemsPerPage, itemsPerPage); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function (value) { return value && value.data && value.data.length > 0; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (value) {
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_9__["range"])(0, 100)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["concatMap"])(function (currentIndex) { return _this.testrunsService.getTestRuns(list, undefined, undefined, undefined, currentIndex * itemsPerPage, itemsPerPage); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["takeWhile"])(function (value) { return value && value.data && value.data.length > 0; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function (value) {
             return {
                 testruns: value.data,
                 totalResults: value.meta.pageInfo.totalResults,
@@ -1994,7 +2142,7 @@ var ReporterDialog = /** @class */ (function () {
             };
         }));
     };
-    ReporterDialog.prototype.setTestRunStatus = function (testRun, testSuite, userId, actualResults) {
+    ReporterDialog.prototype.setTestRunStatus = function (testRun, testSuite, userId, actualResults, executedInVersion) {
         var status;
         switch (this.testSuiteService.getStatus(testSuite)) {
             case 'passed':
@@ -2015,21 +2163,22 @@ var ReporterDialog = /** @class */ (function () {
                         return s;
                     }),
                     'actualResults': this.testSuiteService.getActualResults(testSuite, actualResults),
-                    'assignedTo': userId
+                    'assignedTo': userId,
+                    'tested_version$37': executedInVersion
                 }
             };
             return this.testrunsService.updateTestRun(body, testRun.id)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (value) {
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function (value) {
                 return value.status;
             }));
         }
         else {
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["throwError"])('Status not supported!');
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_9__["throwError"])('Status not supported!');
         }
     };
     ReporterDialog.prototype.createTestCycle = function (project, testPlanId, testCycleName, testGroupsToInclude) {
-        var startDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_10__["format"])(new Date(), 'YYYY-MM-DD');
-        var endDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_10__["format"])(new Date(), 'YYYY-MM-DD');
+        var startDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_11__["format"])(new Date(), 'YYYY-MM-DD');
+        var endDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_11__["format"])(new Date(), 'YYYY-MM-DD');
         var requestTestCycle = {
             'fields': {
                 'name': testCycleName,
@@ -2043,20 +2192,20 @@ var ReporterDialog = /** @class */ (function () {
             }
         };
         return this.testplansService.createTestCycle(requestTestCycle, testPlanId)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (createdResponse) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function (createdResponse) {
             return createdResponse !== null;
         }));
     };
-    ReporterDialog.prototype.updateTestRunsInTheLastCycleOfTheTestPlan = function (testPlanId, testSuites, userId, actualResults) {
+    ReporterDialog.prototype.updateTestRunsInTheLastCycleOfTheTestPlan = function (testPlanId, testSuites, userId, actualResults, executedInVersion) {
         var _this = this;
         this.getLastTestCycleByTestPlanId(testPlanId)
             .subscribe(function (lastTestCycle) {
-            _this.updateTestRunsInTheTestCycle(lastTestCycle, testSuites, userId, actualResults);
+            _this.updateTestRunsInTheTestCycle(lastTestCycle, testSuites, userId, actualResults, executedInVersion);
         });
     };
     ReporterDialog.prototype.getLastTestCycleByTestPlanId = function (testPlanId) {
         return this.testplansService.getTestCycles(testPlanId, 0, 50)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (value) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function (value) {
             if (value.data && value.data.length > 0) {
                 return value.data[value.data.length - 1].id;
             }
@@ -2079,6 +2228,10 @@ var ReporterDialog = /** @class */ (function () {
         __metadata("design:type", _components_test_group_combobox_component__WEBPACK_IMPORTED_MODULE_6__["TestGroupComboBox"])
     ], ReporterDialog.prototype, "testGroupComboBox", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('releaseComboBox'),
+        __metadata("design:type", _components_release_combobox_component__WEBPACK_IMPORTED_MODULE_8__["ReleaseComboBox"])
+    ], ReporterDialog.prototype, "releaseComboBox", void 0);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('header'),
         __metadata("design:type", systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["DialogHeaderComponent"])
     ], ReporterDialog.prototype, "header", void 0);
@@ -2089,8 +2242,9 @@ var ReporterDialog = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./reporter-dialog.component.scss */ "./src/app/features/reporter/reporter-dialog.component.scss")]
         }),
         __metadata("design:paramtypes", [systelab_components_widgets_modal__WEBPACK_IMPORTED_MODULE_1__["DialogRef"], _jama__WEBPACK_IMPORTED_MODULE_2__["UsersService"], _jama__WEBPACK_IMPORTED_MODULE_2__["ProjectsService"],
+            _jama__WEBPACK_IMPORTED_MODULE_2__["ReleasesService"],
             _jama__WEBPACK_IMPORTED_MODULE_2__["TestplansService"], _jama__WEBPACK_IMPORTED_MODULE_2__["TestrunsService"],
-            _service_test_suite_service__WEBPACK_IMPORTED_MODULE_11__["TestSuiteService"], ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"], _jama__WEBPACK_IMPORTED_MODULE_2__["ItemsService"],
+            _service_test_suite_service__WEBPACK_IMPORTED_MODULE_12__["TestSuiteService"], ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"], _jama__WEBPACK_IMPORTED_MODULE_2__["ItemsService"],
             _jama__WEBPACK_IMPORTED_MODULE_2__["AbstractitemsService"]])
     ], ReporterDialog);
     return ReporterDialog;
@@ -2242,7 +2396,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var AbstractitemsService = /** @class */ (function () {
     function AbstractitemsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -2624,7 +2778,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var ActivitiesService = /** @class */ (function () {
     function ActivitiesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -3013,7 +3167,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var AttachmentsService = /** @class */ (function () {
     function AttachmentsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -3417,7 +3571,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var BaselinesService = /** @class */ (function () {
     function BaselinesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -3711,7 +3865,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var CommentsService = /** @class */ (function () {
     function CommentsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -3944,7 +4098,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var FilesService = /** @class */ (function () {
     function FilesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -4064,7 +4218,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var FiltersService = /** @class */ (function () {
     function FiltersService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -4282,7 +4436,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var ItemsService = /** @class */ (function () {
     function ItemsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -5811,7 +5965,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var ItemtypesService = /** @class */ (function () {
     function ItemtypesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -5972,7 +6126,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var PicklistoptionsService = /** @class */ (function () {
     function PicklistoptionsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -6125,7 +6279,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var PicklistsService = /** @class */ (function () {
     function PicklistsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -6358,7 +6512,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var ProjectsService = /** @class */ (function () {
     function ProjectsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -6689,7 +6843,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var RelationshipsService = /** @class */ (function () {
     function RelationshipsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -6965,7 +7119,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var RelationshiptypesService = /** @class */ (function () {
     function RelationshiptypesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -7130,7 +7284,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var ReleasesService = /** @class */ (function () {
     function ReleasesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -7354,7 +7508,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var SystemService = /** @class */ (function () {
     function SystemService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -7491,7 +7645,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var TagsService = /** @class */ (function () {
     function TagsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -7783,7 +7937,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var TestcyclesService = /** @class */ (function () {
     function TestcyclesService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -8190,7 +8344,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var TestplansService = /** @class */ (function () {
     function TestplansService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -9756,7 +9910,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var TestrunsService = /** @class */ (function () {
     function TestrunsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -10688,7 +10842,7 @@ var TestrunsService = /** @class */ (function () {
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
         }
-        return this.httpClient.patch(this.configuration.basePath + "/testruns/" + encodeURIComponent(String(id)), body, {
+        return this.httpClient.patch(this.configuration.basePath.replace("latest", "labs").replace("v1", "labs") + "/testruns/" + encodeURIComponent(String(id)), body, {
             headers: headers,
             withCredentials: this.configuration.withCredentials,
         });
@@ -10907,7 +11061,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var UsergroupsService = /** @class */ (function () {
     function UsergroupsService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -11256,7 +11410,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 var UsersService = /** @class */ (function () {
     function UsersService(httpClient, basePath, configuration) {
         this.httpClient = httpClient;
-        this.basePath = 'https://jama.systelab.net/contour/rest/latest';
+        this.basePath = '';
         this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
         if (basePath) {
@@ -11699,6 +11853,26 @@ var ProjectData = /** @class */ (function () {
     function ProjectData() {
     }
     return ProjectData;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/release-data.model.ts":
+/*!*********************************************!*\
+  !*** ./src/app/model/release-data.model.ts ***!
+  \*********************************************/
+/*! exports provided: ReleaseData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReleaseData", function() { return ReleaseData; });
+var ReleaseData = /** @class */ (function () {
+    function ReleaseData() {
+    }
+    return ReleaseData;
 }());
 
 
@@ -12154,7 +12328,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: false,
+    jamaUrl: 'https://testjama.systelab.net/contour/rest/v1'
 };
 
 
